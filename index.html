@@ -1,84 +1,170 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
   <title>SE ACÁBÓ — Haus of Recovery</title>
+
   <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; background: #050505; }
-    body { overflow: hidden; font-family: Georgia, 'Times New Roman', serif; }
+    :root {
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #050505;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
     .home-screen {
-      min-height: 100svh;
-      min-height: 100vh;
       position: relative;
       display: grid;
+      min-height: 100svh;
+      min-height: 100vh;
       place-items: center;
       isolation: isolate;
       cursor: pointer;
-      background: #050505 url('home_img.jpeg') center center / cover no-repeat;
+      background:
+        #050505 url("home_img.jpeg") center center / cover no-repeat;
     }
+
     .home-screen::after {
-      content: '';
+      content: "";
       position: absolute;
-      inset: 0;
       z-index: -1;
-      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.16));
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.06),
+        rgba(0, 0, 0, 0.16)
+      );
       pointer-events: none;
     }
-    .home-screen:focus-visible { outline: 2px solid #d6ae5c; outline-offset: -8px; }
+
+    .home-screen:focus-visible {
+      outline: 2px solid #d6ae5c;
+      outline-offset: -8px;
+    }
+
     .enter-hint {
       position: absolute;
-      left: 50%;
       bottom: max(26px, env(safe-area-inset-bottom));
-      transform: translateX(-50%);
-      color: rgba(226, 190, 105, .72);
+      left: 50%;
+      color: rgba(226, 190, 105, 0.8);
       font-size: 10px;
-      letter-spacing: .24em;
+      letter-spacing: 0.24em;
+      text-align: center;
       text-transform: uppercase;
-      opacity: .82;
-      transition: opacity .25s ease;
+      transform: translateX(-50%);
+      transition: opacity 0.25s ease;
       white-space: nowrap;
     }
-    .home-screen:hover .enter-hint, .home-screen:focus-visible .enter-hint { opacity: 1; }
+
+    .home-screen.ready .enter-hint {
+      color: rgba(240, 205, 122, 1);
+    }
+
     @media (min-width: 700px) {
-      .home-screen { max-width: 540px; margin: auto; min-height: 100vh; border-left: 1px solid #28231a; border-right: 1px solid #28231a; }
+      .home-screen {
+        max-width: 540px;
+        min-height: 100vh;
+        margin: auto;
+        border-right: 1px solid #28231a;
+        border-left: 1px solid #28231a;
+      }
     }
   </style>
 </head>
+
 <body>
-  <audio id="seacaboJingle" autoplay preload="auto">
-    <source src="seacabo_jingle.mp3" type="audio/mpeg" />
+  <audio id="seacaboJingle" preload="auto">
+    <source src="seacabo_jingle.mp3" type="audio/mpeg">
   </audio>
 
-  <main class="home-screen" id="homeScreen" role="button" tabindex="0" aria-label="Enter Haus of Recovery">
-    <span class="enter-hint">Tap to enter</span>
+  <main
+    id="homeScreen"
+    class="home-screen"
+    role="button"
+    tabindex="0"
+    aria-label="Tap to enter Haus of Recovery"
+  >
+    <span id="enterHint" class="enter-hint">Tap to enter the Haus</span>
   </main>
 
   <script>
-    const homeScreen = document.getElementById('homeScreen');
-    const jingle = document.getElementById('seacaboJingle');
+    var homeScreen = document.getElementById("homeScreen");
+    var enterHint = document.getElementById("enterHint");
+    var jingle = document.getElementById("seacaboJingle");
 
-    // Attempts to play immediately. Most mobile browsers only allow audible
-    // autoplay after a visitor interacts with the page, so the first tap also
-    // starts the jingle if it was blocked.
-    jingle.play().catch(() => {});
+    var firstTapComplete = false;
+    var canEnter = false;
+    var isNavigating = false;
 
-    function enterHaus() {
-      window.location.href = 'haus.html';
+    function activateHome() {
+      if (isNavigating) {
+        return;
+      }
+
+      /*
+        First tap:
+        Start sound. Remain on home screen.
+      */
+      if (!firstTapComplete) {
+        firstTapComplete = true;
+
+        enterHint.textContent = "Opening the Haus…";
+
+        jingle.currentTime = 0;
+
+        jingle.play().catch(function () {
+          /*
+            Audio may be unavailable or blocked. Entry still works.
+          */
+        });
+
+        setTimeout(function () {
+          canEnter = true;
+          homeScreen.classList.add("ready");
+          enterHint.textContent = "Tap again to enter";
+        }, 500);
+
+        return;
+      }
+
+      /*
+        If the user taps before the 0.5-second activation window is complete,
+        stay on the splash screen.
+      */
+      if (!canEnter) {
+        return;
+      }
+
+      /*
+        Second tap: navigate instantly.
+      */
+      isNavigating = true;
+      window.location.href = "haus.html";
     }
 
-    homeScreen.addEventListener('click', () => {
-      jingle.play().catch(() => {});
-      enterHaus();
-    });
+    homeScreen.addEventListener("click", activateHome);
 
-    homeScreen.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
+    homeScreen.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        jingle.play().catch(() => {});
-        enterHaus();
+        activateHome();
       }
     });
   </script>
