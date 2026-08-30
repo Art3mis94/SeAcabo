@@ -26,7 +26,10 @@
       margin: 0;
       background: #010201;
       color: var(--cream);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
     }
     body {
       overflow-x: hidden;
@@ -44,18 +47,26 @@
           #060706 60%,
           #020302 100%
         );
-      border-right: 1px solid #27261e;
-      border-left: 1px solid #27261e;
+      border-right:
+        1px solid #27261e;
+      border-left:
+        1px solid #27261e;
     }
-    /* =========================
+    /* =========================================
        HEADER
-    ========================= */
+    ========================================= */
     .topbar {
       height: 108px;
       display: grid;
-      grid-template-columns: 48px 1fr 48px;
+      grid-template-columns:
+        48px
+        1fr
+        48px;
       align-items: center;
-      padding: 18px 24px 6px;
+      padding:
+        18px
+        24px
+        6px;
       border-bottom:
         1px solid
         rgba(126, 96, 37, 0.25);
@@ -106,25 +117,33 @@
       width: 42px;
       height: 42px;
     }
-    /* =========================
+    /* =========================================
        CONTENT
-    ========================= */
+    ========================================= */
     .content {
-      padding: 18px 20px 12px;
+      padding:
+        18px
+        20px
+        12px;
     }
-    /* =========================
-       FILTER BUTTONS
-    ========================= */
+    /* =========================================
+       FILTERS
+    ========================================= */
     .filters {
       display: flex;
       width: 100%;
       gap: 8px;
-      margin: 0 0 13px;
+      margin:
+        0
+        0
+        13px;
     }
     .filter {
       flex: 1;
       min-height: 52px;
-      padding: 10px 6px;
+      padding:
+        10px
+        6px;
       color: #c6b78f;
       background:
         linear-gradient(
@@ -137,7 +156,9 @@
         var(--gold-border);
       border-radius: 8px;
       box-shadow:
-        0 6px 13px
+        0
+        6px
+        13px
         rgba(0, 0, 0, 0.32);
       cursor: pointer;
       font-size: 14px;
@@ -155,23 +176,42 @@
           #11120e
         );
       border-color:
-        rgba(222, 172, 69, 0.72);
+        rgba(
+          222,
+          172,
+          69,
+          0.72
+        );
       box-shadow:
-        0 6px 13px
+        0
+        6px
+        13px
         rgba(0, 0, 0, 0.36),
-        inset 0 0 0 1px
-        rgba(185, 137, 45, 0.2);
+        inset
+        0
+        0
+        0
+        1px
+        rgba(
+          185,
+          137,
+          45,
+          0.2
+        );
     }
     .count {
-      margin: 0 2px 13px;
+      margin:
+        0
+        2px
+        13px;
       color: #b9aa82;
       font-size: 9px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
-    /* =========================
+    /* =========================================
        INGREDIENT CARDS
-    ========================= */
+    ========================================= */
     .ingredient {
       display: block;
       margin-bottom: 13px;
@@ -186,7 +226,8 @@
       height: 132px;
       cursor: pointer;
       transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
+      -webkit-transform-style:
+        preserve-3d;
       transition:
         transform 0.65s ease,
         height 0.22s ease;
@@ -195,14 +236,21 @@
         height 0.22s ease;
     }
     /*
-      Slightly taller back card so the
-      longer descriptions fit comfortably.
+      BACK HEIGHT
+      The back is deliberately taller than
+      the front so longer descriptions have
+      room.
     */
     .ingredient-flip.flipped {
       height: 248px;
-      transform: rotateY(180deg);
-      -webkit-transform: rotateY(180deg);
+      transform:
+        rotateY(180deg);
+      -webkit-transform:
+        rotateY(180deg);
     }
+    /* =========================================
+       CARD FACE
+    ========================================= */
     .ingredient-face {
       position: absolute;
       inset: 0;
@@ -218,10 +266,13 @@
           #0b0c0a
         );
       box-shadow:
-        0 9px 20px
+        0
+        9px
+        20px
         rgba(0, 0, 0, 0.55);
       backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+      -webkit-backface-visibility:
+        hidden;
     }
     .ingredient-face::before {
       content: "";
@@ -229,13 +280,18 @@
       inset: 5px;
       border:
         1px solid
-        rgba(185, 137, 45, 0.13);
+        rgba(
+          185,
+          137,
+          45,
+          0.13
+        );
       border-radius: 7px;
       pointer-events: none;
     }
-    /* =========================
-       FRONT OF CARD
-    ========================= */
+    /* =========================================
+       FRONT
+    ========================================= */
     .ingredient-front {
       display: grid;
       grid-template-columns:
@@ -264,14 +320,34 @@
       background:
         linear-gradient(
           145deg,
-          rgba(255, 255, 255, 0.18),
+          rgba(
+            255,
+            255,
+            255,
+            0.18
+          ),
           transparent 30%
         ),
         radial-gradient(
           circle at 68% 27%,
-          rgba(204, 163, 76, 0.62) 0%,
-          rgba(58, 48, 27, 0.68) 30%,
-          rgba(13, 14, 11, 0.95) 76%
+          rgba(
+            204,
+            163,
+            76,
+            0.62
+          ) 0%,
+          rgba(
+            58,
+            48,
+            27,
+            0.68
+          ) 30%,
+          rgba(
+            13,
+            14,
+            11,
+            0.95
+          ) 76%
         );
     }
     .ingredient-image::after {
@@ -291,7 +367,10 @@
       padding-right: 1px;
     }
     .ingredient-copy h2 {
-      margin: 0 0 8px;
+      margin:
+        0
+        0
+        8px;
       color: var(--gold-light);
       font-family:
         Arial,
@@ -321,17 +400,21 @@
       .ingredient-copy h2 {
       margin-bottom: 7px;
     }
-    .ingredient[data-category="oils"] .inci {
+    .ingredient[data-category="oils"]
+      .inci {
       color: #deceaa;
       font-size: 11px;
       letter-spacing: 0.025em;
       line-height: 1.5;
     }
-    /* =========================
-       BACK OF CARD
-    ========================= */
+    /* =========================================
+       BACK
+    ========================================= */
     .ingredient-back {
-      padding: 13px 16px 12px;
+      padding:
+        13px
+        16px
+        12px;
       transform:
         rotateY(180deg)
         translateZ(1px);
@@ -340,7 +423,10 @@
         translateZ(1px);
     }
     .ingredient-back h2 {
-      margin: 0 0 6px;
+      margin:
+        0
+        0
+        6px;
       padding-bottom: 6px;
       color: var(--gold-light);
       font-family:
@@ -354,10 +440,18 @@
       text-transform: uppercase;
       border-bottom:
         1px solid
-        rgba(185, 137, 45, 0.38);
+        rgba(
+          185,
+          137,
+          45,
+          0.38
+        );
     }
     .ingredient-back h3 {
-      margin: 5px 0 2px;
+      margin:
+        5px
+        0
+        2px;
       color: var(--gold);
       font-size: 8px;
       font-weight: 700;
@@ -365,12 +459,53 @@
       line-height: 1.05;
       text-transform: uppercase;
     }
+    /*
+      NORMAL TEXT SIZE
+      Most cards will use this size.
+    */
     .ingredient-back p {
       margin: 0;
       color: #d4c6a5;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 400;
       line-height: 1.22;
+    }
+    /*
+      LONG-CONTENT CARDS
+      JavaScript adds .compact when the
+      card contains more text.
+      This means short cards stay larger,
+      while long cards automatically become
+      slightly smaller.
+    */
+    .ingredient-back.compact p {
+      font-size: 10px;
+      line-height: 1.18;
+    }
+    .ingredient-back.compact h3 {
+      margin-top: 4px;
+      font-size: 7.5px;
+    }
+    .ingredient-back.compact h2 {
+      font-size: 14px;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+    }
+    /*
+      EXTRA COMPACT
+      Used only if a particularly long
+      card still needs more room.
+    */
+    .ingredient-back.extra-compact p {
+      font-size: 9.5px;
+      line-height: 1.15;
+    }
+    .ingredient-back.extra-compact h3 {
+      margin-top: 3px;
+      font-size: 7px;
+    }
+    .ingredient-back.extra-compact h2 {
+      font-size: 13px;
     }
     .return-text {
       position: absolute;
@@ -381,31 +516,48 @@
       font-weight: 700;
       letter-spacing: 0.1em;
     }
-    /* =========================
-       BOTTOM NAVIGATION
-    ========================= */
+    /* =========================================
+       BOTTOM NAV
+    ========================================= */
     .bottom-nav {
       position: fixed;
       z-index: 99;
       bottom: 0;
       left: 50%;
       display: grid;
-      width: min(100%, 540px);
+      width:
+        min(
+          100%,
+          540px
+        );
       height: 78px;
       grid-template-columns:
         repeat(7, 1fr);
       padding-bottom:
-        env(safe-area-inset-bottom);
+        env(
+          safe-area-inset-bottom
+        );
       transform:
         translateX(-50%);
       background:
-        rgba(8, 9, 7, 0.97);
+        rgba(
+          8,
+          9,
+          7,
+          0.97
+        );
       border-top:
         1px solid
         #483919;
       box-shadow:
-        0 -7px 20px
-        rgba(0, 0, 0, 0.52);
+        0 -7px
+        20px
+        rgba(
+          0,
+          0,
+          0,
+          0.52
+        );
     }
     .bottom-nav a {
       display: grid;
@@ -423,9 +575,9 @@
       font-size: 20px;
       line-height: 1;
     }
-    /* =========================
+    /* =========================================
        MOBILE
-    ========================= */
+    ========================================= */
     @media (max-width: 390px) {
       .content {
         padding-right: 14px;
@@ -440,11 +592,13 @@
       }
       .filter {
         min-height: 50px;
-        padding: 8px 3px;
+        padding:
+          8px
+          3px;
         font-size: 11px;
         letter-spacing: 0.025em;
       }
-      /* Front card */
+      /* Front */
       .ingredient-front {
         grid-template-columns:
           94px
@@ -459,15 +613,19 @@
         font-size: 13px;
       }
       .inci,
-      .ingredient[data-category="oils"] .inci {
+      .ingredient[data-category="oils"]
+        .inci {
         font-size: 10px;
       }
-      /* Back card */
+      /* Back */
       .ingredient-flip.flipped {
         height: 248px;
       }
       .ingredient-back {
-        padding: 12px 13px 11px;
+        padding:
+          12px
+          13px
+          11px;
       }
       .ingredient-back h2 {
         margin-bottom: 5px;
@@ -484,6 +642,27 @@
       .ingredient-back p {
         font-size: 10px;
         line-height: 1.2;
+      }
+      /* Compact mobile */
+      .ingredient-back.compact p {
+        font-size: 9.3px;
+        line-height: 1.16;
+      }
+      .ingredient-back.compact h3 {
+        margin-top: 4px;
+        font-size: 7px;
+      }
+      .ingredient-back.compact h2 {
+        font-size: 13px;
+      }
+      /* Extra compact mobile */
+      .ingredient-back.extra-compact p {
+        font-size: 8.8px;
+        line-height: 1.12;
+      }
+      .ingredient-back.extra-compact h3 {
+        margin-top: 3px;
+        font-size: 6.8px;
       }
       .return-text {
         right: 11px;
@@ -502,9 +681,9 @@
 </head>
 <body>
   <div class="app">
-    <!-- =========================
+    <!-- ======================================
          HEADER
-    ========================= -->
+    ======================================= -->
     <header class="topbar">
       <button
         class="hamburger"
@@ -516,17 +695,21 @@
         <span></span>
       </button>
       <div class="header-title">
-        <h1>INGREDIENT LIBRARY</h1>
-        <p>ALCHEMICAL BREAKDOWNS</p>
+        <h1>
+          INGREDIENT LIBRARY
+        </h1>
+        <p>
+          ALCHEMICAL BREAKDOWNS
+        </p>
       </div>
       <div
         class="header-spacer"
         aria-hidden="true"
       ></div>
     </header>
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
+    <!-- ======================================
+         MAIN
+    ======================================= -->
     <main class="content">
       <!-- FILTERS -->
       <section
@@ -564,11 +747,11 @@
       >
         09 MATERIALS IN THE ARCHIVE
       </p>
-      <!-- =========================
+      <!-- ======================================
            INGREDIENT LIST
-      ========================= -->
+      ======================================= -->
       <section class="ingredient-list">
-        <!-- GRASS-FED TALLOW -->
+        <!-- Tallow -->
         <article
           class="ingredient"
           data-category="lipids"
@@ -633,7 +816,7 @@
             </section>
           </div>
         </article>
-        <!-- SHEA BUTTER -->
+        <!-- Shea Butter -->
         <article
           class="ingredient"
           data-category="lipids"
@@ -699,7 +882,7 @@
             </section>
           </div>
         </article>
-        <!-- RAW COCOA BUTTER -->
+        <!-- Cocoa Butter -->
         <article
           class="ingredient"
           data-category="lipids"
@@ -765,7 +948,7 @@
             </section>
           </div>
         </article>
-        <!-- PURE CERA ALBA -->
+        <!-- Beeswax -->
         <article
           class="ingredient"
           data-category="lipids"
@@ -830,7 +1013,7 @@
             </section>
           </div>
         </article>
-        <!-- OLIVE SQUALENE -->
+        <!-- Olive Squalene -->
         <article
           class="ingredient"
           data-category="oils"
@@ -895,7 +1078,7 @@
             </section>
           </div>
         </article>
-        <!-- GOLDEN JOJOBA -->
+        <!-- Golden Jojoba -->
         <article
           class="ingredient"
           data-category="oils"
@@ -961,7 +1144,7 @@
             </section>
           </div>
         </article>
-        <!-- CELTIC SEA MOSS -->
+        <!-- Sea Moss -->
         <article
           class="ingredient"
           data-category="botanicals"
@@ -1027,7 +1210,7 @@
             </section>
           </div>
         </article>
-        <!-- CALENDULA -->
+        <!-- Calendula -->
         <article
           class="ingredient"
           data-category="botanicals"
@@ -1093,7 +1276,7 @@
             </section>
           </div>
         </article>
-        <!-- ARROWROOT -->
+        <!-- Arrowroot -->
         <article
           class="ingredient"
           data-category="structure"
@@ -1161,9 +1344,9 @@
         </article>
       </section>
     </main>
-    <!-- =========================
+    <!-- ======================================
          BOTTOM NAVIGATION
-    ========================= -->
+    ======================================= -->
     <nav
       class="bottom-nav"
       aria-label="Primary navigation"
@@ -1201,13 +1384,87 @@
       </a>
     </nav>
   </div>
-  <!-- =========================
+  <!-- ======================================
        JAVASCRIPT
-  ========================= -->
+  ======================================= -->
   <script>
-    /* =========================
+    /* ======================================
+       AUTOMATIC BACK-CARD SIZING
+    ======================================= */
+    function fitBackText() {
+      var backs =
+        document.querySelectorAll(
+          ".ingredient-back"
+        );
+      for (
+        var i = 0;
+        i < backs.length;
+        i++
+      ) {
+        var back = backs[i];
+        /*
+          Reset classes first so the
+          measurement is accurate.
+        */
+        back.classList.remove(
+          "compact"
+        );
+        back.classList.remove(
+          "extra-compact"
+        );
+        /*
+          The usable height inside the card.
+        */
+        var availableHeight =
+          back.clientHeight - 28;
+        /*
+          Measure the content.
+        */
+        var contentHeight =
+          back.scrollHeight;
+        /*
+          If content is too tall,
+          make it compact.
+        */
+        if (
+          contentHeight >
+          availableHeight
+        ) {
+          back.classList.add(
+            "compact"
+          );
+        }
+        /*
+          Check again after compacting.
+        */
+        if (
+          back.scrollHeight >
+          availableHeight
+        ) {
+          back.classList.add(
+            "extra-compact"
+          );
+        }
+      }
+    }
+    /*
+      Run after the page has loaded.
+    */
+    window.addEventListener(
+      "load",
+      fitBackText
+    );
+    /*
+      Run when the device changes
+      orientation or screen size.
+    */
+    window.addEventListener(
+      "resize",
+      fitBackText
+    );
+    /* ======================================
        FLIP CARDS
-    ========================= */
+    ======================================= */
     var cards =
       document.querySelectorAll(
         ".ingredient-flip"
@@ -1224,9 +1481,9 @@
           );
         };
     }
-    /* =========================
-       CATEGORY FILTERS
-    ========================= */
+    /* ======================================
+       FILTERS
+    ======================================= */
     var filters =
       document.querySelectorAll(
         ".filter"
@@ -1251,7 +1508,9 @@
               "data-filter"
             );
           var visible = 0;
-          /* Remove active state */
+          /*
+            Active filter
+          */
           for (
             var a = 0;
             a < filters.length;
@@ -1263,11 +1522,12 @@
                 "active"
               );
           }
-          /* Add active state */
           this.classList.add(
             "active"
           );
-          /* Filter cards */
+          /*
+            Show matching cards
+          */
           for (
             var b = 0;
             b < ingredients.length;
@@ -1289,6 +1549,9 @@
               );
             if (match) {
               visible++;
+              /*
+                Reset flipped cards
+              */
               ingredients[b]
                 .querySelector(
                   ".ingredient-flip"
@@ -1299,7 +1562,9 @@
                 );
             }
           }
-          /* Update archive count */
+          /*
+            Update archive count
+          */
           count.textContent =
             (visible < 10
               ? "0"
@@ -1312,6 +1577,13 @@
                 : "S"
             ) +
             " IN THE ARCHIVE";
+          /*
+            Recalculate text sizes.
+          */
+          setTimeout(
+            fitBackText,
+            50
+          );
         };
     }
   </script>
