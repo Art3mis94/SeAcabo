@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
   <title>HAUS — SE ACÁBÓ</title>
 
   <style>
@@ -21,6 +24,7 @@
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html,
@@ -42,9 +46,15 @@
       margin: 0 auto;
       padding-bottom: 90px;
       background:
-        radial-gradient(circle at 50% -12%, #302b1e 0%, #11120e 28%, #060706 60%, #020302 100%);
-      border-left: 1px solid #27261e;
+        radial-gradient(
+          circle at 50% -12%,
+          #302b1e 0%,
+          #11120e 28%,
+          #060706 60%,
+          #020302 100%
+        );
       border-right: 1px solid #27261e;
+      border-left: 1px solid #27261e;
     }
 
     /* Header */
@@ -92,18 +102,41 @@
       color: var(--gold);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.20em;
+      letter-spacing: 0.2em;
     }
 
-    .bell {
-      border: 0;
-      background: transparent;
+    .music-button {
+      width: 42px;
+      height: 42px;
+      place-self: center end;
+      padding: 0;
       color: var(--gold-light);
-      font-size: 27px;
+      background: transparent;
+      border: 1px solid rgba(214, 170, 80, 0.62);
+      border-radius: 50%;
       cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    /* Content */
+    .music-button.playing {
+      color: #ffe1a0;
+      background: rgba(102, 75, 21, 0.38);
+      border-color: var(--gold-light);
+    }
+
+    .music-button:active {
+      transform: scale(0.92);
+    }
+
+    .music-button:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 3px;
+    }
+
+    /* Main content */
 
     .content {
       padding: 20px;
@@ -147,8 +180,16 @@
       border: 1px solid rgba(223, 176, 73, 0.75);
       border-radius: 19px;
       background:
-        radial-gradient(circle at 78% 8%, rgba(113, 90, 42, 0.38), transparent 30%),
-        radial-gradient(circle at 10% 90%, rgba(92, 67, 26, 0.22), transparent 36%),
+        radial-gradient(
+          circle at 78% 8%,
+          rgba(113, 90, 42, 0.38),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 10% 90%,
+          rgba(92, 67, 26, 0.22),
+          transparent 36%
+        ),
         linear-gradient(135deg, #25251e 0%, #10110e 55%, #070806 100%);
       box-shadow:
         0 18px 34px rgba(0, 0, 0, 0.8),
@@ -204,8 +245,8 @@
     }
 
     .card-brand {
-      text-align: center;
       color: var(--gold-light);
+      text-align: center;
       text-shadow: 0 1px 0 #352407, 0 0 15px rgba(229, 182, 76, 0.2);
     }
 
@@ -328,7 +369,7 @@
       letter-spacing: 0.12em;
     }
 
-    /* Haus content panels */
+    /* HAUS panels */
 
     .info-panel {
       width: 100%;
@@ -466,23 +507,6 @@
       line-height: 1;
     }
 
-    /* Placeholder notification */
-
-    .toast {
-      position: fixed;
-      z-index: 20;
-      bottom: 93px;
-      left: 50%;
-      display: none;
-      padding: 10px 15px;
-      transform: translateX(-50%);
-      color: #1d1508;
-      background: var(--gold-light);
-      border-radius: 18px;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
     @media (max-width: 360px) {
       .content {
         padding: 16px;
@@ -513,6 +537,11 @@
 </head>
 
 <body>
+  <!-- Keep seacabo_jingle.mp3 in the same folder as haus.html -->
+  <audio id="seacaboJingle" preload="auto">
+    <source src="seacabo_jingle.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="app">
     <header class="topbar">
       <button class="hamburger" type="button" aria-label="Menu">
@@ -526,8 +555,14 @@
         <p>HOME SANCTUM</p>
       </div>
 
-      <button id="notificationButton" class="bell" type="button" aria-label="Notifications">
-        ♧
+      <button
+        id="musicButton"
+        class="music-button"
+        type="button"
+        aria-label="Play Se Acabó jingle"
+        aria-pressed="false"
+      >
+        ♫
       </button>
     </header>
 
@@ -565,6 +600,7 @@
                   <h2>Member Pass</h2>
                   <p>NFC / QR VERIFIED</p>
                 </div>
+
                 <div class="nfc-mark">⌁</div>
               </div>
 
@@ -614,7 +650,9 @@
               Solstice Batch 004 allocations<br>
               open to members in
             </p>
+
             <div id="countdown" class="timer">02:18:47</div>
+
             <p class="panel-copy">
               Clinical Update: TEWL retention<br>
               improvement +32%
@@ -640,6 +678,7 @@
                 Solstice Batch 004<br>
                 Winter Harvest 2025
               </p>
+
               <p class="panel-copy gold-copy">Allocation Available</p>
             </div>
           </div>
@@ -662,6 +701,7 @@
               The Lipid Dome: How Barrier<br>
               Integrity Reduces TEWL
             </p>
+
             <p class="panel-copy gold-copy">Read Now</p>
           </div>
 
@@ -708,9 +748,48 @@
     </nav>
   </div>
 
-  <div id="toast" class="toast"></div>
-
   <script>
+    /* Music play / pause */
+
+    var hausJingle = document.getElementById("seacaboJingle");
+    var musicButton = document.getElementById("musicButton");
+
+    function updateMusicButton(isPlaying) {
+      if (isPlaying) {
+        musicButton.textContent = "Ⅱ";
+        musicButton.classList.add("playing");
+        musicButton.setAttribute("aria-label", "Pause Se Acabó jingle");
+        musicButton.setAttribute("aria-pressed", "true");
+      } else {
+        musicButton.textContent = "♫";
+        musicButton.classList.remove("playing");
+        musicButton.setAttribute("aria-label", "Play Se Acabó jingle");
+        musicButton.setAttribute("aria-pressed", "false");
+      }
+    }
+
+    musicButton.onclick = function () {
+      if (hausJingle.paused) {
+        hausJingle.play().catch(function () {
+          updateMusicButton(false);
+        });
+      } else {
+        hausJingle.pause();
+      }
+    };
+
+    hausJingle.addEventListener("play", function () {
+      updateMusicButton(true);
+    });
+
+    hausJingle.addEventListener("pause", function () {
+      updateMusicButton(false);
+    });
+
+    hausJingle.addEventListener("ended", function () {
+      updateMusicButton(false);
+    });
+
     /* Membership card flip */
 
     var memberCard = document.getElementById("memberCard");
@@ -726,7 +805,7 @@
       }
     };
 
-    /* Decorative dummy QR pattern */
+    /* Decorative dummy QR */
 
     var qrPattern = [
       "111111100100111",
@@ -782,19 +861,6 @@
       document.getElementById("countdown").textContent =
         hours + ":" + minutes + ":" + seconds;
     }, 1000);
-
-    /* Notification placeholder */
-
-    var toast = document.getElementById("toast");
-
-    document.getElementById("notificationButton").onclick = function () {
-      toast.textContent = "No new house notices";
-      toast.style.display = "block";
-
-      setTimeout(function () {
-        toast.style.display = "none";
-      }, 1600);
-    };
   </script>
 </body>
 </html>
