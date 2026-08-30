@@ -48,19 +48,36 @@
   </style>
 </head>
 <body>
+  <audio id="seacaboJingle" autoplay preload="auto">
+    <source src="seacabo_jingle.mp3" type="audio/mpeg" />
+  </audio>
+
   <main class="home-screen" id="homeScreen" role="button" tabindex="0" aria-label="Enter Haus of Recovery">
     <span class="enter-hint">Tap to enter</span>
   </main>
+
   <script>
     const homeScreen = document.getElementById('homeScreen');
+    const jingle = document.getElementById('seacaboJingle');
+
+    // Attempts to play immediately. Most mobile browsers only allow audible
+    // autoplay after a visitor interacts with the page, so the first tap also
+    // starts the jingle if it was blocked.
+    jingle.play().catch(() => {});
+
     function enterHaus() {
-      // Update this filename when the next page is ready.
       window.location.href = 'haus.html';
     }
-    homeScreen.addEventListener('click', enterHaus);
+
+    homeScreen.addEventListener('click', () => {
+      jingle.play().catch(() => {});
+      enterHaus();
+    });
+
     homeScreen.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
+        jingle.play().catch(() => {});
         enterHaus();
       }
     });
