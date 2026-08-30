@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>SE ACÁBÓ — Ingredient Library</title>
-
   <style>
     :root {
       --black: #050605;
@@ -18,11 +17,9 @@
       --cream: #f6e9c7;
       --muted: #c6b78f;
     }
-
     * {
       box-sizing: border-box;
     }
-
     html,
     body {
       min-height: 100%;
@@ -31,11 +28,9 @@
       color: var(--cream);
       font-family: Arial, Helvetica, sans-serif;
     }
-
     body {
       overflow-x: hidden;
     }
-
     .app {
       width: min(100%, 540px);
       min-height: 100vh;
@@ -52,9 +47,9 @@
       border-right: 1px solid #27261e;
       border-left: 1px solid #27261e;
     }
-
-    /* Header — matches haus.html */
-
+    /* ================================
+       HEADER
+    ================================= */
     .topbar {
       height: 108px;
       display: grid;
@@ -63,7 +58,6 @@
       padding: 18px 24px 6px;
       border-bottom: 1px solid rgba(126, 96, 37, 0.25);
     }
-
     .hamburger {
       width: 42px;
       height: 42px;
@@ -72,28 +66,28 @@
       background: transparent;
       cursor: pointer;
     }
-
     .hamburger span {
       display: block;
       width: 27px;
       height: 3px;
       margin: 4px 0;
       border-radius: 10px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      background: linear-gradient(
+        90deg,
+        var(--gold),
+        var(--gold-light)
+      );
     }
-
     .header-title {
       text-align: center;
       white-space: nowrap;
     }
-
     .header-title h1 {
       margin: 0;
       color: var(--gold-light);
       font: normal 18px/1 Georgia, "Times New Roman", serif;
       letter-spacing: 0.16em;
     }
-
     .header-title p {
       margin: 7px 0 0;
       color: var(--gold);
@@ -101,48 +95,57 @@
       font-weight: 700;
       letter-spacing: 0.18em;
     }
-
     .header-spacer {
       width: 42px;
       height: 42px;
     }
-
+    /* ================================
+       CONTENT
+    ================================= */
     .content {
       padding: 18px 20px 12px;
     }
-
-    /* Category sorting */
-
+    /* ================================
+       FILTERS
+    ================================= */
     .filters {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 7px;
+      display: flex;
+      width: 100%;
+      gap: 8px;
       margin: 0 0 13px;
     }
-
     .filter {
-      min-height: 47px;
-      padding: 8px 5px;
+      flex: 1;
+      min-height: 52px;
+      padding: 8px 4px;
       color: #c6b78f;
-      background: linear-gradient(145deg, #171812, #0d0e0c);
+      background: linear-gradient(
+        145deg,
+        #171812,
+        #0d0e0c
+      );
       border: 1px solid var(--gold-border);
       border-radius: 8px;
       box-shadow: 0 6px 13px rgba(0, 0, 0, 0.32);
       cursor: pointer;
-      font-size: 9px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.045em;
+      line-height: 1.1;
+      text-align: center;
     }
-
     .filter.active {
       color: var(--gold-light);
-      background: linear-gradient(145deg, #1d1d16, #11120e);
+      background: linear-gradient(
+        145deg,
+        #1d1d16,
+        #11120e
+      );
       border-color: rgba(222, 172, 69, 0.72);
       box-shadow:
         0 6px 13px rgba(0, 0, 0, 0.36),
         inset 0 0 0 1px rgba(185, 137, 45, 0.2);
     }
-
     .count {
       margin: 0 2px 13px;
       color: #b9aa82;
@@ -150,80 +153,98 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
-
-    /* Ingredient cards */
-
-    .ingredient-list {
-      display: block;
-    }
-
+    /* ================================
+       INGREDIENT CARDS
+    ================================= */
     .ingredient {
       display: block;
       margin-bottom: 13px;
       perspective: 1100px;
       -webkit-perspective: 1100px;
     }
-
     .ingredient.hidden {
       display: none;
     }
-
     .ingredient-flip {
       position: relative;
-      height: 128px;
+      height: 132px;
       cursor: pointer;
       transform-style: preserve-3d;
       -webkit-transform-style: preserve-3d;
-      transition: transform 0.65s ease, height 0.22s ease;
-      -webkit-transition: -webkit-transform 0.65s ease, height 0.22s ease;
+      transition:
+        transform 0.65s ease,
+        height 0.22s ease;
+      -webkit-transition:
+        -webkit-transform 0.65s ease,
+        height 0.22s ease;
     }
-
     .ingredient-flip.flipped {
       height: 232px;
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
     }
-
     .ingredient-face {
       position: absolute;
       inset: 0;
       overflow: hidden;
       border: 1px solid var(--gold-border);
       border-radius: 11px;
-      background: linear-gradient(145deg, #181914, #0b0c0a);
-      box-shadow: 0 9px 20px rgba(0, 0, 0, 0.55);
+      background:
+        linear-gradient(
+          145deg,
+          #181914,
+          #0b0c0a
+        );
+      box-shadow:
+        0 9px 20px rgba(0, 0, 0, 0.55);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
     }
-
     .ingredient-face::before {
       content: "";
       position: absolute;
       inset: 5px;
-      border: 1px solid rgba(185, 137, 45, 0.13);
+      border: 1px solid rgba(
+        185,
+        137,
+        45,
+        0.13
+      );
       border-radius: 7px;
       pointer-events: none;
     }
-
+    /* ================================
+       FRONT OF CARD
+    ================================= */
     .ingredient-front {
       display: grid;
-      grid-template-columns: 91px 1fr 27px;
-      gap: 12px;
+      grid-template-columns:
+        104px
+        minmax(0, 1fr)
+        22px;
+      gap: 13px;
       align-items: center;
       padding: 11px;
-      transform: rotateY(0deg) translateZ(1px);
-      -webkit-transform: rotateY(0deg) translateZ(1px);
+      transform:
+        rotateY(0deg)
+        translateZ(1px);
+      -webkit-transform:
+        rotateY(0deg)
+        translateZ(1px);
     }
-
     .ingredient-image {
       position: relative;
-      width: 91px;
-      height: 104px;
+      width: 104px;
+      height: 110px;
       overflow: hidden;
       border: 1px solid #88642b;
       border-radius: 7px;
       background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 30%),
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.18),
+          transparent 30%
+        ),
         radial-gradient(
           circle at 68% 27%,
           rgba(204, 163, 76, 0.62) 0%,
@@ -231,7 +252,6 @@
           rgba(13, 14, 11, 0.95) 76%
         );
     }
-
     .ingredient-image::after {
       content: attr(data-file);
       position: absolute;
@@ -242,81 +262,102 @@
       text-align: center;
       font-size: 7px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
-
     .ingredient-copy {
       min-width: 0;
+      padding-right: 1px;
     }
-
     .ingredient-copy h2 {
       margin: 0 0 8px;
       color: var(--gold-light);
-      font-size: 13px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
       text-transform: uppercase;
     }
-
     .inci {
       margin: 0;
-      color: #d6c7a5;
-      font-size: 10px;
+      color: #d8c9a6;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.035em;
       line-height: 1.45;
       text-transform: uppercase;
     }
-
     .arrow {
       color: var(--gold-light);
-      font-size: 27px;
+      font-size: 26px;
       text-align: center;
     }
-
-    /* Card explanation side */
-
+    .ingredient[data-category="oils"] .ingredient-copy h2 {
+      margin-bottom: 7px;
+    }
+    .ingredient[data-category="oils"] .inci {
+      color: #deceaa;
+      font-size: 11px;
+      letter-spacing: 0.025em;
+      line-height: 1.5;
+    }
+    /* ================================
+       BACK OF CARD
+       LARGER TEXT
+    ================================= */
     .ingredient-back {
-      padding: 12px 16px;
-      transform: rotateY(180deg) translateZ(1px);
-      -webkit-transform: rotateY(180deg) translateZ(1px);
+      padding: 15px 17px 13px;
+      transform:
+        rotateY(180deg)
+        translateZ(1px);
+      -webkit-transform:
+        rotateY(180deg)
+        translateZ(1px);
     }
-
+    /* Ingredient name */
     .ingredient-back h2 {
-      margin: 0 0 6px;
-      padding-bottom: 6px;
+      margin: 0 0 9px;
+      padding-bottom: 8px;
       color: var(--gold-light);
-      border-bottom: 1px solid rgba(185, 137, 45, 0.38);
-      font: normal 18px Georgia, "Times New Roman", serif;
-      letter-spacing: 0.06em;
-    }
-
-    .ingredient-back h3 {
-      margin: 7px 0 2px;
-      color: var(--gold);
-      font-size: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.07em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      border-bottom: 1px solid
+        rgba(185, 137, 45, 0.38);
     }
-
+    /* Section headings */
+    .ingredient-back h3 {
+      margin: 7px 0 3px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    /* Main explanation */
     .ingredient-back p {
       margin: 0;
       color: #d4c6a5;
-      font-size: 10px;
-      line-height: 1.28;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.3;
     }
-
     .return-text {
       position: absolute;
-      right: 13px;
+      right: 14px;
       bottom: 9px;
       color: #aa9b75;
       font-size: 8px;
+      font-weight: 700;
       letter-spacing: 0.1em;
     }
-
-    /* Fixed bottom navigation */
-
+    /* ================================
+       BOTTOM NAVIGATION
+    ================================= */
     .bottom-nav {
       position: fixed;
       z-index: 99;
@@ -325,14 +366,17 @@
       display: grid;
       width: min(100%, 540px);
       height: 78px;
-      grid-template-columns: repeat(7, 1fr);
-      padding-bottom: env(safe-area-inset-bottom);
+      grid-template-columns:
+        repeat(7, 1fr);
+      padding-bottom:
+        env(safe-area-inset-bottom);
       transform: translateX(-50%);
-      background: rgba(8, 9, 7, 0.97);
+      background:
+        rgba(8, 9, 7, 0.97);
       border-top: 1px solid #483919;
-      box-shadow: 0 -7px 20px rgba(0, 0, 0, 0.52);
+      box-shadow:
+        0 -7px 20px rgba(0, 0, 0, 0.52);
     }
-
     .bottom-nav a {
       display: grid;
       gap: 5px;
@@ -342,317 +386,766 @@
       text-decoration: none;
       font-size: 8px;
     }
-
     .bottom-nav a.active {
       color: var(--gold-light);
     }
-
     .bottom-nav .nav-icon {
       font-size: 20px;
       line-height: 1;
     }
-
+    /* ================================
+       SMALL PHONES
+    ================================= */
     @media (max-width: 390px) {
       .content {
         padding-right: 14px;
         padding-left: 14px;
       }
-
       .header-title h1 {
         font-size: 16px;
       }
-
+      /* Filters */
+      .filters {
+        gap: 5px;
+      }
+      .filter {
+        min-height: 50px;
+        padding: 8px 2px;
+        font-size: 11px;
+        letter-spacing: 0.025em;
+      }
+      /* Front */
       .ingredient-front {
-        grid-template-columns: 83px 1fr 21px;
+        grid-template-columns:
+          94px
+          minmax(0, 1fr)
+          19px;
         gap: 10px;
       }
-
       .ingredient-image {
-        width: 83px;
+        width: 94px;
       }
-
+      .ingredient-copy h2 {
+        font-size: 13px;
+      }
+      .inci,
+      .ingredient[data-category="oils"] .inci {
+        font-size: 10px;
+      }
+      /* Larger flip-card text */
+      .ingredient-back {
+        padding: 13px 14px 12px;
+      }
+      .ingredient-back h2 {
+        font-size: 16px;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+      }
+      .ingredient-back h3 {
+        font-size: 9px;
+        margin-top: 6px;
+        margin-bottom: 2px;
+      }
+      .ingredient-back p {
+        font-size: 11.5px;
+        line-height: 1.27;
+      }
       .bottom-nav a {
         font-size: 7px;
       }
-
       .bottom-nav .nav-icon {
         font-size: 18px;
       }
-
       .ingredient-flip.flipped {
         height: 244px;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="app">
+    <!-- ================================
+         HEADER
+    ================================= -->
     <header class="topbar">
-      <button class="hamburger" type="button" aria-label="Open navigation menu">
+      <button
+        class="hamburger"
+        type="button"
+        aria-label="Open navigation menu"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
-
       <div class="header-title">
         <h1>INGREDIENT LIBRARY</h1>
         <p>ALCHEMICAL BREAKDOWNS</p>
       </div>
-
-      <div class="header-spacer" aria-hidden="true"></div>
+      <div
+        class="header-spacer"
+        aria-hidden="true"
+      ></div>
     </header>
-
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
     <main class="content">
-      <section class="filters" aria-label="Ingredient category filters">
-        <button class="filter active" data-filter="all">ALL</button>
-        <button class="filter" data-filter="lipids">LIPIDS</button>
-        <button class="filter" data-filter="botanicals">BOTANICALS</button>
-        <button class="filter" data-filter="oils">OILS</button>
+      <!-- FILTERS -->
+      <section
+        class="filters"
+        aria-label="Ingredient category filters"
+      >
+        <button
+          class="filter active"
+          data-filter="all"
+        >
+          ALL
+        </button>
+        <button
+          class="filter"
+          data-filter="lipids"
+        >
+          LIPIDS
+        </button>
+        <button
+          class="filter"
+          data-filter="botanicals"
+        >
+          BOTANICALS
+        </button>
+        <button
+          class="filter"
+          data-filter="oils"
+        >
+          OILS
+        </button>
       </section>
-
-      <p id="count" class="count">09 MATERIALS IN THE ARCHIVE</p>
-
+      <!-- COUNT -->
+      <p id="count" class="count">
+        09 MATERIALS IN THE ARCHIVE
+      </p>
+      <!-- ================================
+           INGREDIENT LIST
+      ================================= -->
       <section class="ingredient-list">
-
-        <article class="ingredient" data-category="lipids">
+        <!-- ================================
+             GRASS-FED TALLOW
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="lipids"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="tallow.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="tallow.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Grass-Fed Tallow</h2>
-                <p class="inci">INCI: BOVINE TALLOW</p>
+                <h2>
+                  Grass-Fed Tallow
+                </h2>
+                <p class="inci">
+                  INCI: BOVINE TALLOW
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Grass-Fed Tallow</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A rendered animal fat traditionally used as a source of rich, stable lipids.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It gives the balm dense emollience and a protective lipid feel on skin.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Richness, cushion, lipid nourishment and an occlusive skin feel.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It is not a miracle ingredient. It is a lipid with a defined formulation role.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Grass-Fed Tallow
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A rendered animal fat traditionally used as
+                a source of rich, stable lipids.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It gives the balm dense emollience and a
+                protective lipid feel on skin.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Richness, cushion, lipid nourishment and an
+                occlusive skin feel.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It is not a miracle ingredient. It is a
+                lipid with a defined formulation role.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="lipids">
+        <!-- ================================
+             SHEA BUTTER
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="lipids"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="shea_butter.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="shea_butter.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Shea Butter</h2>
-                <p class="inci">INCI: BUTYROSPERMUM PARKII<br>(SHEA) BUTTER</p>
+                <h2>
+                  Shea Butter
+                </h2>
+                <p class="inci">
+                  INCI: BUTYROSPERMUM PARKII<br>
+                  (SHEA) BUTTER
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Shea Butter</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A rich plant butter from the nuts of Vitellaria paradoxa.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It adds cushioning and richness without relying only on wax for structure.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Emollience, creamy texture, body and a smooth after-feel.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It has a defined job in the formula; familiar does not mean simplistic.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Shea Butter
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A rich plant butter from the nuts of
+                Vitellaria paradoxa.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It adds cushioning and richness without
+                relying only on wax for structure.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Emollience, creamy texture, body and a
+                smooth after-feel.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It has a defined job in the formula;
+                familiar does not mean simplistic.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="lipids">
+        <!-- ================================
+             RAW COCOA BUTTER
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="lipids"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="cocoa_butter.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="cocoa_butter.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Raw Cocoa Butter</h2>
-                <p class="inci">INCI: THEOBROMA CACAO<br>(COCOA) SEED BUTTER</p>
+                <h2>
+                  Raw Cocoa Butter
+                </h2>
+                <p class="inci">
+                  INCI: THEOBROMA CACAO<br>
+                  (COCOA) SEED BUTTER
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Raw Cocoa Butter</h2>
-              <h3>WHAT IT IS</h3>
-              <p>The solid fat obtained from cocoa beans, Theobroma cacao.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It helps the balm stay solid in the tin and melt responsively on skin.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Firmness, smooth application, rich emollience and balm structure.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It is not a cure. It performs a real texture and stability role.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Raw Cocoa Butter
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                The solid fat obtained from cocoa beans,
+                Theobroma cacao.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It helps the balm stay solid in the tin and
+                melt responsively on skin.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Firmness, smooth application, rich emollience
+                and balm structure.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It is not a cure. It performs a real texture
+                and stability role.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="lipids">
+        <!-- ================================
+             PURE CERA ALBA
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="lipids"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="beeswax.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="beeswax.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Pure Cera Alba</h2>
-                <p class="inci">INCI: CERA ALBA (BEESWAX)</p>
+                <h2>
+                  Pure Cera Alba
+                </h2>
+                <p class="inci">
+                  INCI: CERA ALBA (BEESWAX)
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Pure Cera Alba</h2>
-              <h3>WHAT IT IS</h3>
-              <p>Cera Alba is a natural wax produced by honeybees.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>Without structure, a balm becomes an oil. Beeswax provides architecture.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Firmness, consistency, viscosity and a protective film-forming character.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It does not repair skin. Its role is to give the balm physical form.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Pure Cera Alba
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                Cera Alba is a natural wax produced by
+                honeybees.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                Without structure, a balm becomes an oil.
+                Beeswax provides architecture.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Firmness, consistency, viscosity and a
+                protective film-forming character.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It does not repair skin. Its role is to give
+                the balm physical form.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="oils">
+        <!-- ================================
+             OLIVE SQUALENE
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="oils"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="olive_squalene.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="olive_squalene.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Olive Squalene</h2>
-                <p class="inci">INCI: SQUALENE</p>
+                <h2>
+                  Olive Squalene
+                </h2>
+                <p class="inci">
+                  INCI: SQUALENE
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Olive Squalene</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A lightweight lipid material derived from olive sources.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It adds slip and a lighter emollient character within the lipid blend.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Spreadability, conditioning and a silkier skin feel.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It is not a miracle active. It contributes a specific sensory and lipid role.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Olive Squalene
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A lightweight lipid material derived from
+                olive sources.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It adds slip and a lighter emollient
+                character within the lipid blend.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Spreadability, conditioning and a silkier
+                skin feel.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It is not a miracle active. It contributes
+                a specific sensory and lipid role.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="oils">
+        <!-- ================================
+             GOLDEN JOJOBA
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="oils"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="golden_jojoba.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="golden_jojoba.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Golden Jojoba</h2>
-                <p class="inci">INCI: SIMMONDSIA CHINENSIS<br>(JOJOBA) SEED OIL</p>
+                <h2>
+                  Golden Jojoba
+                </h2>
+                <p class="inci">
+                  INCI: SIMMONDSIA CHINENSIS<br>
+                  (JOJOBA) SEED OIL
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Golden Jojoba</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A golden botanical oil from the seeds of Simmondsia chinensis.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It supports glide and balance in the formula’s blend of oils and richer lipids.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Conditioning, spreadability and a refined finish.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It does not need a miracle story; it has a practical place in the formula.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Golden Jojoba
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A golden botanical oil from the seeds of
+                Simmondsia chinensis.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It supports glide and balance in the formula’s
+                blend of oils and richer lipids.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Conditioning, spreadability and a refined
+                finish.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It does not need a miracle story; it has a
+                practical place in the formula.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="botanicals">
+        <!-- ================================
+             CELTIC SEA MOSS
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="botanicals"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="sea_moss.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="sea_moss.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Celtic Sea Moss</h2>
-                <p class="inci">INCI: CHONDRUS CRISPUS<br>(CARRAGEENAN EXTRACT)</p>
+                <h2>
+                  Celtic Sea Moss
+                </h2>
+                <p class="inci">
+                  INCI: CHONDRUS CRISPUS<br>
+                  (CARRAGEENAN EXTRACT)
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Celtic Sea Moss</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A marine red-algae material such as Chondrus crispus, known as Irish moss.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It introduces a distinct marine botanical material beside the formula’s lipids.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Polysaccharide-rich, conditioning and marine botanical character.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>Sea moss is not magic. It is one purposeful component within the formula.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Celtic Sea Moss
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A marine red-algae material such as Chondrus
+                crispus, known as Irish moss.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It introduces a distinct marine botanical
+                material beside the formula’s lipids.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Polysaccharide-rich, conditioning and marine
+                botanical character.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                Sea moss is not magic. It is one purposeful
+                component within the formula.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="botanicals">
+        <!-- ================================
+             CALENDULA
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="botanicals"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="calendula.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="calendula.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Calendula</h2>
-                <p class="inci">INCI: CALENDULA OFFICINALIS<br>FLOWER EXTRACT</p>
+                <h2>
+                  Calendula
+                </h2>
+                <p class="inci">
+                  INCI: CALENDULA OFFICINALIS<br>
+                  FLOWER EXTRACT
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Calendula</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A flowering botanical with a long history in topical herbal preparations.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It fits the formula’s focus on familiar materials, comfort and conditioning.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Botanical conditioning, herbal character and antioxidant constituents.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It is not a cure. It is a traditional botanical with a defined purpose.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Calendula
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A flowering botanical with a long history in
+                topical herbal preparations.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It fits the formula’s focus on familiar
+                materials, comfort and conditioning.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Botanical conditioning, herbal character and
+                antioxidant constituents.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It is not a cure. It is a traditional
+                botanical with a defined purpose.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
-        <article class="ingredient" data-category="structure">
+        <!-- ================================
+             ARROWROOT
+        ================================= -->
+        <article
+          class="ingredient"
+          data-category="structure"
+        >
           <div class="ingredient-flip">
-            <section class="ingredient-face ingredient-front">
-              <div class="ingredient-image" data-file="arrowroot.jpeg"></div>
+            <section
+              class="ingredient-face ingredient-front"
+            >
+              <div
+                class="ingredient-image"
+                data-file="arrowroot.jpeg"
+              ></div>
               <div class="ingredient-copy">
-                <h2>Arrowroot</h2>
-                <p class="inci">INCI: MARANTA ARUNDINACEA<br>ROOT POWDER</p>
+                <h2>
+                  Arrowroot
+                </h2>
+                <p class="inci">
+                  INCI: MARANTA ARUNDINACEA<br>
+                  ROOT POWDER
+                </p>
               </div>
-              <div class="arrow">›</div>
+              <div class="arrow">
+                ›
+              </div>
             </section>
-
-            <section class="ingredient-face ingredient-back">
-              <h2>Arrowroot</h2>
-              <h3>WHAT IT IS</h3>
-              <p>A powdered starch obtained from plants such as Maranta arundinacea.</p>
-              <h3>WHY WE USE IT</h3>
-              <p>It helps refine the after-feel of a rich balm and reduce perceived greasiness.</p>
-              <h3>WHAT IT CONTRIBUTES</h3>
-              <p>Softer dry-down, powdery sensory character and skin-feel modification.</p>
-              <h3>WHAT IT DOESN’T DO</h3>
-              <p>It does not repair skin or treat inflammation; it improves product experience.</p>
-              <span class="return-text">TAP TO RETURN ↻</span>
+            <section
+              class="ingredient-face ingredient-back"
+            >
+              <h2>
+                Arrowroot
+              </h2>
+              <h3>
+                WHAT IT IS
+              </h3>
+              <p>
+                A powdered starch obtained from plants such
+                as Maranta arundinacea.
+              </p>
+              <h3>
+                WHY WE USE IT
+              </h3>
+              <p>
+                It helps refine the after-feel of a rich balm
+                and reduce perceived greasiness.
+              </p>
+              <h3>
+                WHAT IT CONTRIBUTES
+              </h3>
+              <p>
+                Softer dry-down, powdery sensory character
+                and skin-feel modification.
+              </p>
+              <h3>
+                WHAT IT DOESN’T DO
+              </h3>
+              <p>
+                It does not repair skin or treat inflammation;
+                it improves product experience.
+              </p>
+              <span class="return-text">
+                TAP TO RETURN ↻
+              </span>
             </section>
           </div>
         </article>
-
       </section>
     </main>
-
-    <nav class="bottom-nav" aria-label="Primary navigation">
+    <!-- ================================
+         BOTTOM NAVIGATION
+    ================================= -->
+    <nav
+      class="bottom-nav"
+      aria-label="Primary navigation"
+    >
       <a href="haus.html">
         <span class="nav-icon">⌂</span>
         <span>HAUS</span>
@@ -669,7 +1162,10 @@
         <span class="nav-icon">♙</span>
         <span>PASSPORT</span>
       </a>
-      <a class="active" href="library.html">
+      <a
+        class="active"
+        href="library.html"
+      >
         <span class="nav-icon">▦</span>
         <span>LIBRARY</span>
       </a>
@@ -683,52 +1179,114 @@
       </a>
     </nav>
   </div>
-
+  <!-- ================================
+       JAVASCRIPT
+  ================================= -->
   <script>
-    var cards = document.querySelectorAll(".ingredient-flip");
-
-    for (var i = 0; i < cards.length; i++) {
+    /* --------------------------------
+       FLIP CARDS
+    -------------------------------- */
+    var cards =
+      document.querySelectorAll(
+        ".ingredient-flip"
+      );
+    for (
+      var i = 0;
+      i < cards.length;
+      i++
+    ) {
       cards[i].onclick = function () {
-        this.classList.toggle("flipped");
+        this.classList.toggle(
+          "flipped"
+        );
       };
     }
-
-    var filters = document.querySelectorAll(".filter");
-    var ingredients = document.querySelectorAll(".ingredient");
-    var count = document.getElementById("count");
-
-    for (var j = 0; j < filters.length; j++) {
-      filters[j].onclick = function () {
-        var selected = this.getAttribute("data-filter");
-        var visible = 0;
-
-        for (var a = 0; a < filters.length; a++) {
-          filters[a].classList.remove("active");
-        }
-
-        this.classList.add("active");
-
-        for (var b = 0; b < ingredients.length; b++) {
-          var category = ingredients[b].getAttribute("data-category");
-          var match = selected === "all" || category === selected;
-
-          ingredients[b].classList.toggle("hidden", !match);
-
-          if (match) {
-            visible++;
-            ingredients[b]
-              .querySelector(".ingredient-flip")
-              .classList.remove("flipped");
+    /* --------------------------------
+       FILTERS
+    -------------------------------- */
+    var filters =
+      document.querySelectorAll(
+        ".filter"
+      );
+    var ingredients =
+      document.querySelectorAll(
+        ".ingredient"
+      );
+    var count =
+      document.getElementById(
+        "count"
+      );
+    for (
+      var j = 0;
+      j < filters.length;
+      j++
+    ) {
+      filters[j].onclick =
+        function () {
+          var selected =
+            this.getAttribute(
+              "data-filter"
+            );
+          var visible = 0;
+          /* Active button */
+          for (
+            var a = 0;
+            a < filters.length;
+            a++
+          ) {
+            filters[a]
+              .classList
+              .remove("active");
           }
-        }
-
-        count.textContent =
-          (visible < 10 ? "0" : "") +
-          visible +
-          " MATERIAL" +
-          (visible === 1 ? "" : "S") +
-          " IN THE ARCHIVE";
-      };
+          this.classList.add(
+            "active"
+          );
+          /* Filter ingredients */
+          for (
+            var b = 0;
+            b < ingredients.length;
+            b++
+          ) {
+            var category =
+              ingredients[b]
+                .getAttribute(
+                  "data-category"
+                );
+            var match =
+              selected === "all" ||
+              category === selected;
+            ingredients[b]
+              .classList
+              .toggle(
+                "hidden",
+                !match
+              );
+            if (match) {
+              visible++;
+              ingredients[b]
+                .querySelector(
+                  ".ingredient-flip"
+                )
+                .classList
+                .remove(
+                  "flipped"
+                );
+            }
+          }
+          /* Update count */
+          count.textContent =
+            (visible < 10
+              ? "0"
+              : "") +
+            visible +
+            " MATERIAL" +
+            (
+              visible === 1
+                ? ""
+                : "S"
+            ) +
+            " IN THE ARCHIVE";
+        };
     }
   </script>
 </body>
