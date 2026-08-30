@@ -53,7 +53,7 @@
       border-left: 1px solid #27261e;
     }
 
-    /* Header — consistent with HAUS */
+    /* Header */
 
     .topbar {
       height: 108px;
@@ -111,7 +111,7 @@
       padding: 18px 20px 12px;
     }
 
-    /* Filter tabs */
+    /* Filters */
 
     .filters {
       display: flex;
@@ -248,18 +248,14 @@
       padding-right: 1px;
     }
 
-    .ingredient-copy h2,
-    .ingredient-back h2 {
+    .ingredient-copy h2 {
+      margin: 0 0 8px;
       color: var(--gold-light);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-    }
-
-    .ingredient-copy h2 {
-      margin: 0 0 8px;
     }
 
     .inci {
@@ -285,19 +281,12 @@
       text-align: center;
     }
 
-    /* Compact flipped card */
+    /* Compact reverse side — no ingredient name repeated */
 
     .ingredient-back {
-      padding: 10px 14px;
+      padding: 13px 15px 11px;
       transform: rotateY(180deg) translateZ(1px);
       -webkit-transform: rotateY(180deg) translateZ(1px);
-    }
-
-    .ingredient-back h2 {
-      margin: 0 0 4px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(185, 137, 45, 0.35);
-      font-size: 12px;
     }
 
     .ingredient-back h3 {
@@ -309,6 +298,10 @@
       letter-spacing: 0.13em;
     }
 
+    .ingredient-back h3::after {
+      content: " ";
+    }
+
     .ingredient-back p {
       display: inline;
       margin: 0;
@@ -317,14 +310,10 @@
       line-height: 1.24;
     }
 
-    .ingredient-back h3::after {
-      content: " ";
-    }
-
     .ingredient-back p::after {
       content: "";
       display: block;
-      height: 4px;
+      height: 5px;
     }
 
     .return-text {
@@ -336,7 +325,7 @@
       letter-spacing: 0.09em;
     }
 
-    /* Fixed bottom navigation */
+    /* Fixed bottom nav */
 
     .bottom-nav {
       position: fixed;
@@ -403,8 +392,7 @@
         width: 94px;
       }
 
-      .ingredient-copy h2,
-      .ingredient-back h2 {
+      .ingredient-copy h2 {
         font-size: 12px;
       }
 
@@ -414,7 +402,7 @@
       }
 
       .ingredient-back {
-        padding: 10px 12px;
+        padding: 12px 12px 10px;
       }
 
       .ingredient-back h3 {
@@ -442,6 +430,7 @@
 
 <body>
   <div class="app">
+
     <header class="topbar">
       <button class="hamburger" type="button" aria-label="Open navigation menu">
         <span></span>
@@ -479,12 +468,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Grass-Fed Tallow</h2>
               <h3>WHAT IT IS</h3><p>Rendered animal fat used as a source of rich, stable lipids.</p>
               <h3>WHY WE USE IT</h3><p>Dense emollience and a protective lipid feel.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Richness, cushion and lipid nourishment.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It is not a miracle ingredient; it has a defined formula role.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>Not a miracle ingredient; it has a defined formula role.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -500,8 +489,8 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Shea Butter</h2>
               <h3>WHAT IT IS</h3><p>A rich plant butter from the nuts of Vitellaria paradoxa.</p>
               <h3>WHY WE USE IT</h3><p>Adds cushioning and richness to the balm.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Emollience, creamy texture and a smooth after-feel.</p>
@@ -521,12 +510,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Raw Cocoa Butter</h2>
               <h3>WHAT IT IS</h3><p>The solid fat obtained from cocoa beans.</p>
               <h3>WHY WE USE IT</h3><p>Helps balm stay solid, then melt on skin.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Firmness, smooth application and rich emollience.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It is not a cure; it provides texture and stability.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>Not a cure; it provides texture and stability.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -542,8 +531,8 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Pure Cera Alba</h2>
               <h3>WHAT IT IS</h3><p>A natural wax produced by honeybees.</p>
               <h3>WHY WE USE IT</h3><p>It gives oils and butters physical architecture.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Firmness, consistency and a protective film.</p>
@@ -563,12 +552,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Olive Squalene</h2>
               <h3>WHAT IT IS</h3><p>A lightweight lipid material from olive sources.</p>
               <h3>WHY WE USE IT</h3><p>It brings slip and a lighter emollient feel.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Spreadability, conditioning and silky texture.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It is not a miracle active; it has a sensory role.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>Not a miracle active; it has a sensory role.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -584,12 +573,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Golden Jojoba</h2>
               <h3>WHAT IT IS</h3><p>A golden botanical oil from jojoba seeds.</p>
               <h3>WHY WE USE IT</h3><p>It supports glide and balance in the lipid blend.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Conditioning, spreadability and a refined finish.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It has a practical formula role, not a miracle story.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>A practical formula role, not a miracle story.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -605,12 +594,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Celtic Sea Moss</h2>
               <h3>WHAT IT IS</h3><p>A marine red-algae material, known as Irish moss.</p>
-              <h3>WHY WE USE IT</h3><p>It adds a distinct botanical material beside the lipids.</p>
+              <h3>WHY WE USE IT</h3><p>Adds a distinct botanical material beside the lipids.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Conditioning and marine botanical character.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It is not magic; it is one purposeful formula element.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>Not magic; it is one purposeful formula element.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -626,12 +615,12 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Calendula</h2>
               <h3>WHAT IT IS</h3><p>A flowering botanical used in topical herbal preparations.</p>
               <h3>WHY WE USE IT</h3><p>It supports the formula’s familiar botanical character.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Conditioning, herbal character and antioxidant constituents.</p>
-              <h3>WHAT IT DOESN’T DO</h3><p>It is not a cure; it is a botanical with a clear role.</p>
+              <h3>WHAT IT DOESN’T DO</h3><p>Not a cure; it is a botanical with a clear role.</p>
               <span class="return-text">TAP TO RETURN ↻</span>
             </section>
           </div>
@@ -647,8 +636,8 @@
               </div>
               <div class="arrow">›</div>
             </section>
+
             <section class="ingredient-face ingredient-back">
-              <h2>Arrowroot</h2>
               <h3>WHAT IT IS</h3><p>A powdered starch from plants such as Maranta arundinacea.</p>
               <h3>WHY WE USE IT</h3><p>It refines a rich balm’s after-feel.</p>
               <h3>WHAT IT CONTRIBUTES</h3><p>Softer dry-down and reduced perceived greasiness.</p>
