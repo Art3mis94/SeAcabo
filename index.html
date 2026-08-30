@@ -15,6 +15,7 @@
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html,
@@ -37,6 +38,7 @@
       place-items: center;
       isolation: isolate;
       cursor: pointer;
+      touch-action: manipulation;
       background:
         #050505 url("home_img.jpeg") center center / cover no-repeat;
     }
@@ -69,7 +71,7 @@
       text-align: center;
       text-transform: uppercase;
       transform: translateX(-50%);
-      transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease, color 0.25s ease;
       white-space: nowrap;
     }
 
@@ -112,16 +114,13 @@
     var firstTapComplete = false;
     var canEnter = false;
     var isNavigating = false;
+    var lastTouchTime = 0;
 
     function activateHome() {
       if (isNavigating) {
         return;
       }
 
-      /*
-        First tap:
-        Start sound. Remain on home screen.
-      */
       if (!firstTapComplete) {
         firstTapComplete = true;
 
@@ -130,9 +129,7 @@
         jingle.currentTime = 0;
 
         jingle.play().catch(function () {
-          /*
-            Audio may be unavailable or blocked. Entry still works.
-          */
+          /* Entry remains available even if the MP3 cannot play. */
         });
 
         setTimeout(function () {
@@ -144,22 +141,40 @@
         return;
       }
 
-      /*
-        If the user taps before the 0.5-second activation window is complete,
-        stay on the splash screen.
-      */
       if (!canEnter) {
         return;
       }
 
-      /*
-        Second tap: navigate instantly.
-      */
       isNavigating = true;
       window.location.href = "haus.html";
     }
 
-    homeScreen.addEventListener("click", activateHome);
+    /*
+      Mobile first:
+      Handle touchstart directly. Calling preventDefault stops the later
+      synthetic click event from counting as a second tap.
+    */
+    homeScreen.addEventListener(
+      "touchstart",
+      function (event) {
+        lastTouchTime = Date.now();
+        event.preventDefault();
+        activateHome();
+      },
+      { passive: false }
+    );
+
+    /*
+      Desktop / mouse support:
+      Ignore click events that arrive immediately after a touch event.
+    */
+    homeScreen.addEventListener("click", function () {
+      if (Date.now() - lastTouchTime < 700) {
+        return;
+      }
+
+      activateHome();
+    });
 
     homeScreen.addEventListener("keydown", function (event) {
       if (event.key === "Enter" || event.key === " ") {
