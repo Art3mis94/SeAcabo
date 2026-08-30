@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>SE ACÁBÓ — Haus of Recovery</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #050505; }
+    body { overflow: hidden; font-family: Georgia, 'Times New Roman', serif; }
+    .home-screen {
+      min-height: 100svh;
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      cursor: pointer;
+      background: #050505 url('home_img.jpeg') center center / cover no-repeat;
+    }
+    .home-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.16));
+      pointer-events: none;
+    }
+    .home-screen:focus-visible { outline: 2px solid #d6ae5c; outline-offset: -8px; }
+    .enter-hint {
+      position: absolute;
+      left: 50%;
+      bottom: max(26px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      color: rgba(226, 190, 105, .72);
+      font-size: 10px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      opacity: .82;
+      transition: opacity .25s ease;
+      white-space: nowrap;
+    }
+    .home-screen:hover .enter-hint, .home-screen:focus-visible .enter-hint { opacity: 1; }
+    @media (min-width: 700px) {
+      .home-screen { max-width: 540px; margin: auto; min-height: 100vh; border-left: 1px solid #28231a; border-right: 1px solid #28231a; }
+    }
+  </style>
+</head>
+<body>
+  <main class="home-screen" id="homeScreen" role="button" tabindex="0" aria-label="Enter Haus of Recovery">
+    <span class="enter-hint">Tap to enter</span>
+  </main>
+  <script>
+    const homeScreen = document.getElementById('homeScreen');
+    function enterHaus() {
+      // Update this filename when the next page is ready.
+      window.location.href = 'haus.html';
+    }
+    homeScreen.addEventListener('click', enterHaus);
+    homeScreen.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        enterHaus();
+      }
+    });
+  </script>
+</body>
+</html>
