@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HAUS — SE ACÁBÓ</title>
+
+  <style>
+    :root {
+      --black: #050605;
+      --obsidian: #0b0c0a;
+      --panel: #11120f;
+      --panel-light: #191a14;
+      --gold: #d6aa50;
+      --gold-light: #f0cd7a;
+      --gold-dark: #76551d;
+      --gold-border: #5d4824;
+      --cream: #f6e9c7;
+      --muted: #c6b78f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: #010201;
+      color: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .app {
+      width: min(100%, 540px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding-bottom: 90px;
+      background:
+        radial-gradient(circle at 50% -12%, #302b1e 0%, #11120e 28%, #060706 60%, #020302 100%);
+      border-left: 1px solid #27261e;
+      border-right: 1px solid #27261e;
+    }
+
+    /* Header */
+
+    .topbar {
+      height: 108px;
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      align-items: center;
+      padding: 18px 24px 6px;
+      border-bottom: 1px solid rgba(126, 96, 37, 0.25);
+    }
+
+    .hamburger {
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 27px;
+      height: 3px;
+      margin: 4px 0;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+
+    .header-title {
+      text-align: center;
+    }
+
+    .header-title h1 {
+      margin: 0;
+      color: var(--gold-light);
+      font: normal 23px/1 Georgia, "Times New Roman", serif;
+      letter-spacing: 0.24em;
+    }
+
+    .header-title p {
+      margin: 7px 0 0;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+    }
+
+    .bell {
+      border: 0;
+      background: transparent;
+      color: var(--gold-light);
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* Content */
+
+    .content {
+      padding: 20px;
+    }
+
+    /* Membership card */
+
+    .card-space {
+      height: 244px;
+      display: grid;
+      place-items: center;
+    }
+
+    .card-scene {
+      width: 92%;
+      aspect-ratio: 1.586 / 1;
+      perspective: 1100px;
+      -webkit-perspective: 1100px;
+    }
+
+    .member-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+      -webkit-transition: -webkit-transform 0.8s ease;
+    }
+
+    .member-card.flipped {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    .card-side {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid rgba(223, 176, 73, 0.75);
+      border-radius: 19px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(113, 90, 42, 0.38), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(92, 67, 26, 0.22), transparent 36%),
+        linear-gradient(135deg, #25251e 0%, #10110e 55%, #070806 100%);
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.8),
+        inset 0 0 0 5px rgba(0, 0, 0, 0.38),
+        inset 0 0 0 6px rgba(185, 137, 45, 0.38);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .card-side::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px solid rgba(222, 172, 69, 0.47);
+      border-radius: 13px;
+      pointer-events: none;
+    }
+
+    .card-side::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.17;
+      background:
+        repeating-linear-gradient(
+          107deg,
+          transparent 0 5px,
+          rgba(255, 255, 255, 0.09) 6px,
+          transparent 7px 13px
+        );
+    }
+
+    .card-front {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      color: var(--gold-light);
+      transform: rotateY(0deg) translateZ(1px);
+      -webkit-transform: rotateY(0deg) translateZ(1px);
+    }
+
+    .card-front-top,
+    .card-front-bottom {
+      display: flex;
+      justify-content: space-between;
+      color: #ead291;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .card-brand {
+      text-align: center;
+      color: var(--gold-light);
+      text-shadow: 0 1px 0 #352407, 0 0 15px rgba(229, 182, 76, 0.2);
+    }
+
+    .monogram {
+      padding-right: 15px;
+      font: italic bold 54px/0.78 Georgia, "Times New Roman", serif;
+      letter-spacing: -0.24em;
+    }
+
+    .brand-name {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+    }
+
+    .brand-subtitle {
+      margin-top: 6px;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.29em;
+    }
+
+    .member-number {
+      color: var(--gold-light);
+      font: 700 14px/1 "Courier New", monospace;
+      letter-spacing: 0.1em;
+    }
+
+    .card-back {
+      padding: 16px;
+      color: var(--gold-light);
+      transform: rotateY(180deg) translateZ(1px);
+      -webkit-transform: rotateY(180deg) translateZ(1px);
+    }
+
+    .pass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .pass-header h2 {
+      margin: 0;
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .pass-header p {
+      margin: 5px 0 0;
+      color: #e9cb81;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.17em;
+    }
+
+    .nfc-mark {
+      color: var(--gold-light);
+      font-size: 28px;
+      line-height: 0.8;
+    }
+
+    .qr-frame {
+      width: 92px;
+      height: 92px;
+      margin: 10px auto;
+      padding: 5px;
+      border: 1px solid var(--gold);
+      background: #090909;
+    }
+
+    .qr-code {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      grid-template-columns: repeat(15, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+      gap: 1px;
+    }
+
+    .qr-code i {
+      background: var(--gold-light);
+    }
+
+    .qr-code i.blank {
+      background: transparent;
+    }
+
+    .ledger {
+      display: grid;
+      gap: 5px;
+      padding-top: 7px;
+      border-top: 1px solid rgba(185, 137, 45, 0.45);
+    }
+
+    .ledger-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #ebd49a;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ledger-row strong {
+      color: var(--gold-light);
+      font: 700 9px "Courier New", monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .card-hint {
+      margin: 0 0 20px;
+      color: #b9aa82;
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    /* Haus content panels */
+
+    .info-panel {
+      width: 100%;
+      margin-bottom: 13px;
+      padding: 16px;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      background: linear-gradient(145deg, #181914, #0b0c0a);
+      border: 1px solid var(--gold-border);
+      border-radius: 11px;
+      box-shadow: 0 9px 20px rgba(0, 0, 0, 0.55);
+      font-family: inherit;
+    }
+
+    .panel-content {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .panel-icon {
+      display: grid;
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      color: var(--gold-light);
+      border: 1px solid #8a672b;
+      border-radius: 50%;
+      font: 24px Georgia, "Times New Roman", serif;
+    }
+
+    .panel-text {
+      flex: 1;
+    }
+
+    .panel-title {
+      margin: 1px 0 9px;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .panel-copy {
+      margin: 0;
+      color: #ddcda8;
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .timer {
+      margin: 7px 0;
+      color: var(--gold-light);
+      font: 22px/1 "Courier New", monospace;
+      letter-spacing: 0.07em;
+    }
+
+    .panel-arrow {
+      align-self: center;
+      color: var(--gold-light);
+      font-size: 27px;
+    }
+
+    .next-drop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .allocation-circle {
+      display: grid;
+      flex: 0 0 auto;
+      width: 71px;
+      height: 71px;
+      place-items: center;
+      color: var(--gold-light);
+      border: 3px solid #4b3d23;
+      border-top-color: var(--gold-light);
+      border-right-color: var(--gold-light);
+      border-radius: 50%;
+      font: 20px Georgia, "Times New Roman", serif;
+    }
+
+    .library-image {
+      width: 46px;
+      height: 61px;
+      flex: 0 0 auto;
+      border: 1px solid #88642b;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.3), transparent 30%),
+        linear-gradient(135deg, #807f74 0%, #141512 44%, #b9934d 100%);
+    }
+
+    .gold-copy {
+      margin-top: 8px;
+      color: var(--gold-light);
+    }
+
+    /* Bottom navigation */
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      left: 50%;
+      display: grid;
+      width: min(100%, 540px);
+      height: 78px;
+      grid-template-columns: repeat(7, 1fr);
+      padding-bottom: env(safe-area-inset-bottom);
+      transform: translateX(-50%);
+      background: rgba(8, 9, 7, 0.97);
+      border-top: 1px solid #483919;
+    }
+
+    .bottom-nav a {
+      display: grid;
+      gap: 5px;
+      place-content: center;
+      color: #a48b4e;
+      text-decoration: none;
+      font-size: 8px;
+      text-align: center;
+    }
+
+    .bottom-nav a.active {
+      color: var(--gold-light);
+    }
+
+    .bottom-nav .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* Placeholder notification */
+
+    .toast {
+      position: fixed;
+      z-index: 20;
+      bottom: 93px;
+      left: 50%;
+      display: none;
+      padding: 10px 15px;
+      transform: translateX(-50%);
+      color: #1d1508;
+      background: var(--gold-light);
+      border-radius: 18px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 360px) {
+      .content {
+        padding: 16px;
+      }
+
+      .card-space {
+        height: 226px;
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .qr-frame {
+        width: 82px;
+        height: 82px;
+      }
+
+      .bottom-nav a {
+        font-size: 7px;
+      }
+
+      .bottom-nav .nav-icon {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <button class="hamburger" type="button" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="header-title">
+        <h1>HAUS</h1>
+        <p>HOME SANCTUM</p>
+      </div>
+
+      <button id="notificationButton" class="bell" type="button" aria-label="Notifications">
+        ♧
+      </button>
+    </header>
+
+    <main class="content">
+      <section class="card-space">
+        <div class="card-scene">
+          <div
+            id="memberCard"
+            class="member-card"
+            role="button"
+            tabindex="0"
+            aria-label="Tap to flip membership card"
+          >
+            <div class="card-side card-front">
+              <div class="card-front-top">
+                <span>Sovereign Member</span>
+                <span>Est. 2026</span>
+              </div>
+
+              <div class="card-brand">
+                <div class="monogram">SA</div>
+                <div class="brand-name">SE ACÁBÓ</div>
+                <div class="brand-subtitle">HAUS OF RECOVERY</div>
+              </div>
+
+              <div class="card-front-bottom">
+                <span>Member</span>
+                <span class="member-number">000327</span>
+              </div>
+            </div>
+
+            <div class="card-side card-back">
+              <div class="pass-header">
+                <div>
+                  <h2>Member Pass</h2>
+                  <p>NFC / QR VERIFIED</p>
+                </div>
+                <div class="nfc-mark">⌁</div>
+              </div>
+
+              <div class="qr-frame">
+                <div id="qrCode" class="qr-code"></div>
+              </div>
+
+              <div class="ledger">
+                <div class="ledger-row">
+                  <span>Member No.</span>
+                  <strong>000327</strong>
+                </div>
+
+                <div class="ledger-row">
+                  <span>Member Since</span>
+                  <strong>2026</strong>
+                </div>
+
+                <div class="ledger-row">
+                  <span>Status</span>
+                  <strong>ACTIVE</strong>
+                </div>
+
+                <div class="ledger-row">
+                  <span>House Ledger</span>
+                  <strong>SOVEREIGN TIER</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="card-hint">Tap card to flip</p>
+
+      <button
+        class="info-panel"
+        type="button"
+        onclick="window.location.href='drops.html'"
+      >
+        <div class="panel-content">
+          <div class="panel-icon">▣</div>
+
+          <div class="panel-text">
+            <h2 class="panel-title">Haus Notice</h2>
+            <p class="panel-copy">
+              Solstice Batch 004 allocations<br>
+              open to members in
+            </p>
+            <div id="countdown" class="timer">02:18:47</div>
+            <p class="panel-copy">
+              Clinical Update: TEWL retention<br>
+              improvement +32%
+            </p>
+          </div>
+
+          <div class="panel-arrow">›</div>
+        </div>
+      </button>
+
+      <button
+        class="info-panel"
+        type="button"
+        onclick="window.location.href='drops.html'"
+      >
+        <div class="next-drop">
+          <div class="panel-content">
+            <div class="panel-icon">$</div>
+
+            <div class="panel-text">
+              <h2 class="panel-title">Next Drop</h2>
+              <p class="panel-copy">
+                Solstice Batch 004<br>
+                Winter Harvest 2025
+              </p>
+              <p class="panel-copy gold-copy">Allocation Available</p>
+            </div>
+          </div>
+
+          <div class="allocation-circle">37%</div>
+        </div>
+      </button>
+
+      <button
+        class="info-panel"
+        type="button"
+        onclick="window.location.href='library.html'"
+      >
+        <div class="panel-content">
+          <div class="library-image"></div>
+
+          <div class="panel-text">
+            <h2 class="panel-title">Latest Library Entry</h2>
+            <p class="panel-copy">
+              The Lipid Dome: How Barrier<br>
+              Integrity Reduces TEWL
+            </p>
+            <p class="panel-copy gold-copy">Read Now</p>
+          </div>
+
+          <div class="panel-arrow">›</div>
+        </div>
+      </button>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <a class="active" href="haus.html">
+        <span class="nav-icon">⌂</span>
+        <span>HAUS</span>
+      </a>
+
+      <a href="archive.html">
+        <span class="nav-icon">▣</span>
+        <span>ARCHIVE</span>
+      </a>
+
+      <a href="drops.html">
+        <span class="nav-icon">◷</span>
+        <span>DROPS</span>
+      </a>
+
+      <a href="passport.html">
+        <span class="nav-icon">♙</span>
+        <span>PASSPORT</span>
+      </a>
+
+      <a href="library.html">
+        <span class="nav-icon">▦</span>
+        <span>LIBRARY</span>
+      </a>
+
+      <a href="journal.html">
+        <span class="nav-icon">◩</span>
+        <span>JOURNAL</span>
+      </a>
+
+      <a href="account.html">
+        <span class="nav-icon">♙</span>
+        <span>ACCOUNT</span>
+      </a>
+    </nav>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    /* Membership card flip */
+
+    var memberCard = document.getElementById("memberCard");
+
+    memberCard.onclick = function () {
+      memberCard.classList.toggle("flipped");
+    };
+
+    memberCard.onkeydown = function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        memberCard.classList.toggle("flipped");
+      }
+    };
+
+    /* Decorative dummy QR pattern */
+
+    var qrPattern = [
+      "111111100100111",
+      "100000101010001",
+      "101110101110101",
+      "101110100010101",
+      "101110101110101",
+      "100000101010001",
+      "111111101010111",
+      "000000001110000",
+      "110111111011101",
+      "001010001110100",
+      "111011101001111",
+      "100110011110001",
+      "101011110011101",
+      "000000001010000",
+      "111111101111111"
+    ].join("");
+
+    var qrHTML = "";
+
+    for (var i = 0; i < qrPattern.length; i++) {
+      if (qrPattern[i] === "0") {
+        qrHTML += "<i class='blank'></i>";
+      } else {
+        qrHTML += "<i></i>";
+      }
+    }
+
+    document.getElementById("qrCode").innerHTML = qrHTML;
+
+    /* Countdown */
+
+    var remainingSeconds = (2 * 60 * 60) + (18 * 60) + 47;
+
+    setInterval(function () {
+      if (remainingSeconds > 0) {
+        remainingSeconds--;
+      }
+
+      var hours = String(
+        Math.floor(remainingSeconds / 3600)
+      ).padStart(2, "0");
+
+      var minutes = String(
+        Math.floor((remainingSeconds % 3600) / 60)
+      ).padStart(2, "0");
+
+      var seconds = String(
+        remainingSeconds % 60
+      ).padStart(2, "0");
+
+      document.getElementById("countdown").textContent =
+        hours + ":" + minutes + ":" + seconds;
+    }, 1000);
+
+    /* Notification placeholder */
+
+    var toast = document.getElementById("toast");
+
+    document.getElementById("notificationButton").onclick = function () {
+      toast.textContent = "No new house notices";
+      toast.style.display = "block";
+
+      setTimeout(function () {
+        toast.style.display = "none";
+      }, 1600);
+    };
+  </script>
+</body>
+</html>
