@@ -1,24 +1,241 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Journal — SE ACABÓ</title>
-<style>
-:root{--black:#000;--gold:#c99525;--gold-light:#edc55f;--gold-dark:#76520f;--cream:#f6e9c7;--muted:#bdaa78}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{min-height:100%;margin:0;background:#000;color:var(--cream);font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif}body{overflow-x:hidden}.app{width:min(100%,540px);min-height:100vh;margin:auto;padding-bottom:96px;background:#000;border-inline:1px solid #211805}.topbar{height:108px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;padding:18px 24px 6px;border-bottom:1px solid var(--gold-dark)}.hamburger{width:42px;height:42px;padding:8px;border:0;background:#000;cursor:pointer}.hamburger span{display:block;width:27px;height:3px;margin:4px 0;border-radius:10px;background:var(--gold-light)}.header-title{text-align:center}.header-title h1{margin:0;color:var(--gold-light);font-size:21px;font-weight:700;letter-spacing:.24em}.header-title p{margin:7px 0 0;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.2em}.header-spacer{width:42px}.content{padding:18px 20px 12px}.tabs{display:grid;grid-template-columns:1fr 1fr;margin-bottom:14px;border:1px solid var(--gold-dark);border-radius:8px;overflow:hidden}.tab{padding:13px 8px;color:var(--muted);background:#000;border:0;cursor:pointer;font:700 10px Gotham,'Montserrat','Avenir Next',Arial,sans-serif;letter-spacing:.14em}.tab.active{color:var(--gold-light);border-bottom:2px solid var(--gold-light)}.view{display:none}.view.active{display:block}.dispatch-card,.player-card,.recent-card{margin-bottom:14px;background:#000;border:1px solid var(--gold-dark);border-radius:11px}.dispatch-card{position:relative;min-height:270px;padding:19px;overflow:hidden}.dispatch-content{position:relative;z-index:1;max-width:72%}.eyebrow{margin:0 0 17px;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.16em}.dispatch-card h2{margin:0 0 16px;color:var(--gold-light);font-size:21px;line-height:1.12;letter-spacing:.06em}.dispatch-card p{margin:0 0 14px;color:var(--cream);font-size:13px;line-height:1.5}.dispatch-link{display:inline-block;margin-top:8px;color:var(--gold-light);font-size:11px;font-weight:700;letter-spacing:.1em}.founder-image{position:absolute;right:-20px;bottom:0;width:47%;height:100%;object-fit:cover;object-position:center;opacity:.72;filter:grayscale(1) sepia(.7) saturate(.7) contrast(1.15);mix-blend-mode:screen}.recent-card{padding:18px}.recent-card h2{margin:0 0 12px;color:var(--gold-light);font-size:12px;letter-spacing:.15em}.recent-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;color:var(--cream);border-top:1px solid #332609;font-size:12px}.recent-row span:first-child{color:var(--gold)}.recent-row span:last-child{color:var(--gold-light);font-size:21px}.player-card{padding:20px}.player-heading{margin-bottom:20px}.player-heading h2{margin:0 0 8px;color:var(--gold-light);font-size:19px;letter-spacing:.12em}.player-heading p{margin:0;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.15em}.anthem-art{position:relative;min-height:220px;margin-bottom:17px;border:1px solid var(--gold-dark);overflow:hidden;background:radial-gradient(circle at 50% 65%,#322006 0,#100b02 35%,#000 75%)}.anthem-art:before{content:'';position:absolute;inset:10px;border:1px solid #3f2c08;pointer-events:none}.anthem-title{position:absolute;z-index:2;top:20px;left:0;right:0;text-align:center}.anthem-title strong{display:block;color:var(--gold-light);font-size:15px;letter-spacing:.13em}.anthem-title span{display:block;margin-top:7px;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.16em}.visualizer{position:absolute;z-index:2;right:6%;bottom:24px;left:6%;height:98px;display:flex;align-items:center;justify-content:center;gap:3px}.visualizer:after{content:'';position:absolute;right:0;bottom:49%;left:0;height:1px;background:linear-gradient(90deg,transparent,#76520f 18%,#c99525 50%,#76520f 82%,transparent);opacity:.72}.visualizer-bar{position:relative;z-index:1;display:block;width:3px;height:8px;min-height:6px;border-radius:4px;transform-origin:center;transition:height .05s linear,opacity .1s ease,background .1s ease,box-shadow .1s ease}.transport{display:grid;grid-template-columns:42px 1fr 42px;gap:13px;align-items:center;margin-top:10px}.transport button{width:42px;height:42px;color:var(--gold-light);background:#000;border:1px solid var(--gold-dark);border-radius:50%;cursor:pointer;font-size:16px}.play{width:54px!important;height:54px!important;justify-self:center;border-color:var(--gold-light)!important;font-size:21px!important}.progress-wrap{grid-column:1/-1}.progress{width:100%;height:3px;accent-color:var(--gold-light);cursor:pointer}.times{display:flex;justify-content:space-between;margin-top:5px;color:var(--muted);font:10px 'Courier New',monospace}.verse{margin-top:20px;padding-top:16px;border-top:1px solid var(--gold-dark)}.verse h3{margin:0 0 11px;color:var(--gold);font-size:10px;letter-spacing:.14em}.verse p{margin:0;color:var(--cream);font-size:13px;line-height:1.55;white-space:pre-line}.track-list{display:grid;gap:10px;margin-top:16px}.track{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px;color:var(--cream);background:#000;border:1px solid var(--gold-dark);border-radius:8px}.track.active{border-color:var(--gold-light)}.track-copy strong{display:block;color:var(--gold-light);font-size:12px;letter-spacing:.1em}.track button{width:36px;height:36px;flex:none;color:var(--gold-light);background:#000;border:1px solid var(--gold);border-radius:50%;cursor:pointer}.bottom-nav{position:fixed;z-index:99;bottom:0;left:50%;display:grid;width:min(100%,540px);height:78px;grid-template-columns:repeat(7,1fr);padding-bottom:env(safe-area-inset-bottom);transform:translateX(-50%);background:#000;border-top:1px solid var(--gold-dark)}.bottom-nav a{display:grid;gap:5px;place-content:center;color:var(--gold);text-align:center;text-decoration:none;font-size:8px;font-weight:600}.bottom-nav a.active{color:var(--gold-light)}.nav-icon{font-size:20px;line-height:1}.menu-layer{position:fixed;z-index:120;inset:0;display:none;background:#000c}.menu-layer.open{display:block}.drawer{width:min(310px,84vw);height:100%;padding:25px 21px;background:#000;border-right:1px solid var(--gold-dark)}.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.drawer h3{margin:0;color:var(--gold-light);font-size:20px;letter-spacing:.15em}.drawer button{border:0;background:#000;color:var(--gold-light);font-size:29px;cursor:pointer}.drawer a{display:block;padding:15px 2px;color:var(--gold-light);border-bottom:1px solid var(--gold-dark);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.11em}.drawer a[hidden]{display:none!important}.drawer a.master-link{color:#fff0ad}@media(max-width:390px){.content{padding-inline:14px}.header-title h1{font-size:18px}.dispatch-content{max-width:73%}.dispatch-card h2{font-size:18px}.founder-image{width:49%}.bottom-nav a{font-size:7px}.nav-icon{font-size:18px}.visualizer{gap:2px}.visualizer-bar{width:2px}}
-</style>
-</head>
-<body>
-<audio id="track1" preload="metadata"><source src="seacabo_jingle.mp3" type="audio/mpeg"></audio>
-<audio id="track2" preload="metadata"><source src="latin_jingle.mp3" type="audio/mpeg"></audio>
-<div class="app"><header class="topbar"><button id="menuButton" class="hamburger" type="button" aria-label="Open navigation menu"><span></span><span></span><span></span></button><div class="header-title"><h1>JOURNAL</h1><p>FOUNDER DISPATCHES</p></div><div class="header-spacer" aria-hidden="true"></div></header><main class="content"><div class="tabs"><button class="tab active" data-view="dispatches" type="button">DISPATCHES</button><button class="tab" data-view="hymn" type="button">BRAND HYMN</button></div><section id="dispatches" class="view active"><article class="dispatch-card"><div class="dispatch-content"><p class="eyebrow">DISPATCH 007</p><h2>ANCESTRAL LIPIDS</h2><p>We were never meant to bathe in chemicals. Our ancestors thrived on fat, wax and wild plants.</p><p>It is time to return.</p><a class="dispatch-link" href="#recent">READ DISPATCH →</a></div><img class="founder-image" src="IMG_1913.jpeg" alt="Founder portrait"></article><article id="recent" class="recent-card"><h2>RECENT DISPATCHES</h2><div class="recent-row"><span>Dispatch 006 &nbsp; Escaping the Multi-Step Trap</span><span>›</span></div><div class="recent-row"><span>Dispatch 005 &nbsp; The Skin Remembers</span><span>›</span></div><div class="recent-row"><span>Dispatch 004 &nbsp; Simplicity is Sovereignty</span><span>›</span></div></article></section><section id="hymn" class="view"><article class="player-card"><div class="player-heading"><h2>HAUS OF RECOVERY</h2><p>BRAND HYMN · AUDIO DISPATCH</p></div><div class="anthem-art"><div class="anthem-title"><strong>HAUS OF RECOVERY</strong><span>LIVE HARMONIC FIELD</span></div><div id="visualizer" class="visualizer" aria-label="Interactive gold waveform and live audio visualizer"></div></div><div class="transport"><button id="previousTrack" type="button" aria-label="Previous track">|◀</button><button id="playButton" class="play" type="button" aria-label="Play Track 1">▶</button><button id="nextTrack" type="button" aria-label="Next track">▶|</button><div class="progress-wrap"><input id="progress" class="progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Track progress"><div class="times"><span id="currentTime">00:00</span><span id="duration">00:00</span></div></div></div><div class="verse"><h3 id="verseLabel">VERSE I</h3><p id="verseText">In stillness, the barrier rises.
-In recovery, we return to source.</p></div><div class="track-list"><div class="track active"><div class="track-copy"><strong>TRACK 1</strong></div><button type="button" data-track="0" aria-label="Play Track 1">▶</button></div><div class="track"><div class="track-copy"><strong>TRACK 2</strong></div><button type="button" data-track="1" aria-label="Play Track 2">▶</button></div></div></article></section></main><nav class="bottom-nav" aria-label="Primary navigation"><a href="haus.html"><span class="nav-icon">⌂</span><span>HAUS</span></a><a href="archive.html"><span class="nav-icon">▣</span><span>ARCHIVE</span></a><a href="drops.html"><span class="nav-icon">◷</span><span>DROPS</span></a><a href="passport.html"><span class="nav-icon">♙</span><span>PASSPORT</span></a><a href="library.html"><span class="nav-icon">▦</span><span>LIBRARY</span></a><a class="active" href="journal.html"><span class="nav-icon">◩</span><span>JOURNAL</span></a><a href="account.html"><span class="nav-icon">♙</span><span>ACCOUNT</span></a></nav></div><div id="menuLayer" class="menu-layer"><aside class="drawer"><div class="drawer-head"><h3>HAUS</h3><button id="closeMenu" type="button" aria-label="Close menu">×</button></div><a href="haus.html">HOME SANCTUM</a><a href="archive.html">VINTAGE VAULT</a><a href="drops.html">ALLOCATION MANAGER</a><a href="passport.html">MEMBER PASSPORT</a><a href="library.html">BARRIER ACADEMY</a><a href="journal.html">FOUNDER DISPATCHES</a><a href="account.html">PREFERENCES &amp; IDENTITY</a><a id="masterLedgerLink" class="master-link" href="admin.html" hidden>MASTER LEDGER</a></aside></div>
-<script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';import{getAuth,setPersistence,browserLocalPersistence,onAuthStateChanged}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';import{getFirestore,doc,getDoc}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
-const firebaseConfig={apiKey:"AIzaSyDc9zNGMfAWAAWw5NJULTDs558VG6lRXvE",authDomain:"seacabo-47534.firebaseapp.com",projectId:"seacabo-47534",storageBucket:"seacabo-47534.firebasestorage.app",messagingSenderId:"69526242796",appId:"1:69526242796:web:179ee35e8c7a746669acc9",measurementId:"G-WH7ER7NL6W"};const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),masterLedgerLink=document.getElementById('masterLedgerLink');await setPersistence(auth,browserLocalPersistence).catch(()=>{});onAuthStateChanged(auth,async user=>{if(!user)return;try{const roleDoc=await getDoc(doc(db,'admins',user.uid));const role=roleDoc.exists()?roleDoc.data().role:null;masterLedgerLink.hidden=!(role==='master'||role==='admin')}catch(error){masterLedgerLink.hidden=true}});
-</script>
-<script>
-const menuLayer=document.getElementById('menuLayer');document.getElementById('menuButton').onclick=()=>menuLayer.classList.add('open');document.getElementById('closeMenu').onclick=()=>menuLayer.classList.remove('open');menuLayer.onclick=event=>{if(event.target===menuLayer)menuLayer.classList.remove('open')};document.querySelectorAll('.tab').forEach(tab=>tab.onclick=()=>{document.querySelectorAll('.tab').forEach(item=>item.classList.remove('active'));document.querySelectorAll('.view').forEach(item=>item.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.view).classList.add('active')});
-const tracks=[document.getElementById('track1'),document.getElementById('track2')],playButton=document.getElementById('playButton'),progress=document.getElementById('progress'),currentTime=document.getElementById('currentTime'),duration=document.getElementById('duration'),visualizer=document.getElementById('visualizer'),verseLabel=document.getElementById('verseLabel'),verseText=document.getElementById('verseText');const verses=[['VERSE I','In stillness, the barrier rises.\nIn recovery, we return to source.'],['VERSE VII','The old ways remain in the body.\nWe return to what was enough.']];const BAR_COUNT=72;let currentTrack=0,audioContext,animationFrame;const analysers=[],frequencyData=[],trackPeaks=[null,null],peakLoads=[null,null];
-function formatTime(seconds){if(!Number.isFinite(seconds))return'00:00';return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(Math.floor(seconds%60)).padStart(2,'0')}function createBars(){visualizer.replaceChildren();for(let i=0;i<BAR_COUNT;i++){const bar=document.createElement('i');bar.className='visualizer-bar';visualizer.appendChild(bar)}}function fallbackPeaks(){return Array.from({length:BAR_COUNT},(_,i)=>.14+Math.abs(Math.sin(i*.47))*.42+Math.abs(Math.sin(i*.12))*.18)}async function loadActualTrackPeaks(index){if(trackPeaks[index])return trackPeaks[index];if(peakLoads[index])return peakLoads[index];peakLoads[index]=(async()=>{try{const context=audioContext||new(window.AudioContext||window.webkitAudioContext)();const response=await fetch(tracks[index].currentSrc||tracks[index].src);if(!response.ok)throw Error();const buffer=await context.decodeAudioData(await response.arrayBuffer()),channel=buffer.getChannelData(0),block=Math.max(1,Math.floor(channel.length/BAR_COUNT)),peaks=[];let maximum=0;for(let i=0;i<BAR_COUNT;i++){let peak=0;for(let j=i*block,end=Math.min(channel.length,(i+1)*block);j<end;j++)peak=Math.max(peak,Math.abs(channel[j]));peaks.push(peak);maximum=Math.max(maximum,peak)}trackPeaks[index]=peaks.map(peak=>Math.max(.08,Math.pow(peak/(maximum||1),.6)))}catch(e){trackPeaks[index]=fallbackPeaks()}finally{peakLoads[index]=null}return trackPeaks[index]})();return peakLoads[index]}function setupGraph(){if(audioContext)return;audioContext=new(window.AudioContext||window.webkitAudioContext)();tracks.forEach((audio,index)=>{const analyser=audioContext.createAnalyser(),source=audioContext.createMediaElementSource(audio);analyser.fftSize=256;analyser.smoothingTimeConstant=.72;source.connect(analyser);analyser.connect(audioContext.destination);analysers[index]=analyser;frequencyData[index]=new Uint8Array(analyser.frequencyBinCount)})}function updatePlayer(){const audio=tracks[currentTrack];playButton.textContent=audio.paused?'▶':'Ⅱ';progress.value=audio.duration?audio.currentTime/audio.duration*100:0;currentTime.textContent=formatTime(audio.currentTime);duration.textContent=formatTime(audio.duration)}function paint(live){const audio=tracks[currentTrack],peaks=trackPeaks[currentTrack]||fallbackPeaks(),played=audio.duration?audio.currentTime/audio.duration:0,data=frequencyData[currentTrack];if(live&&analysers[currentTrack])analysers[currentTrack].getByteFrequencyData(data);[...visualizer.children].forEach((bar,i)=>{const liveLevel=live&&data?Math.pow(data[Math.floor(i/(BAR_COUNT-1)*(data.length-1))]/255,.78):0,height=Math.min(96,8+peaks[i]*51+liveLevel*42),isPlayed=(i+.5)/BAR_COUNT<=played;bar.style.height=height+'px';bar.style.opacity=isPlayed?.78+liveLevel*.22:.24+peaks[i]*.21;bar.style.background=isPlayed?'linear-gradient(to bottom,#fff9d0,#edc55f 42%,#a46d18)':'linear-gradient(to bottom,#9e711f,#6f4a0c 55%,#352304)';bar.style.boxShadow=isPlayed&&liveLevel>.15?'0 0 '+(5+liveLevel*11)+'px rgba(237,197,95,.88)':'0 0 4px rgba(201,149,37,.25)'})}function animate(){paint(true);animationFrame=requestAnimationFrame(animate)}function reset(){cancelAnimationFrame(animationFrame);paint(false)}async function selectTrack(index,autoplay=false){tracks.forEach((audio,i)=>{if(i!==index){audio.pause();audio.currentTime=0}});currentTrack=index;document.querySelectorAll('.track').forEach((row,i)=>row.classList.toggle('active',i===index));verseLabel.textContent=verses[index][0];verseText.textContent=verses[index][1];await loadActualTrackPeaks(index);reset();updatePlayer();if(autoplay)start()}async function start(){try{setupGraph();if(audioContext.state==='suspended')await audioContext.resume();await loadActualTrackPeaks(currentTrack);await tracks[currentTrack].play()}catch(e){}}createBars();loadActualTrackPeaks(0).then(reset);tracks.forEach((audio,index)=>{audio.onloadedmetadata=()=>{if(index===currentTrack){updatePlayer();reset()}};audio.ontimeupdate=updatePlayer;audio.onplay=()=>{if(index===currentTrack){cancelAnimationFrame(animationFrame);animate();updatePlayer()}};audio.onpause=()=>{if(index===currentTrack){reset();updatePlayer()}};audio.onended=()=>{if(index===currentTrack&&index<tracks.length-1)selectTrack(index+1,true);else if(index===currentTrack){reset();updatePlayer()}}});playButton.onclick=()=>tracks[currentTrack].paused?start():tracks[currentTrack].pause();document.getElementById('previousTrack').onclick=()=>selectTrack((currentTrack+tracks.length-1)%tracks.length,true);document.getElementById('nextTrack').onclick=()=>selectTrack((currentTrack+1)%tracks.length,true);progress.oninput=()=>{const audio=tracks[currentTrack];if(audio.duration)audio.currentTime=Number(progress.value)/100*audio.duration;reset();updatePlayer()};document.querySelectorAll('.track button').forEach(button=>button.onclick=()=>selectTrack(Number(button.dataset.track),true));
-</script>
-</body>
-</html>
+/* Replace the final non-module player script in journal.html with this version.
+   Key fix: one shared analyser is fed only by the active audio source. This avoids
+   Safari/WebKit issues where a second MediaElementAudioSourceNode does not update.
+*/
+const menuLayer = document.getElementById('menuLayer');
+document.getElementById('menuButton').onclick = () => menuLayer.classList.add('open');
+document.getElementById('closeMenu').onclick = () => menuLayer.classList.remove('open');
+menuLayer.onclick = (event) => { if (event.target === menuLayer) menuLayer.classList.remove('open'); };
+
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.onclick = () => {
+    document.querySelectorAll('.tab').forEach((item) => item.classList.remove('active'));
+    document.querySelectorAll('.view').forEach((item) => item.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.view).classList.add('active');
+  };
+});
+
+const tracks = [document.getElementById('track1'), document.getElementById('track2')];
+const playButton = document.getElementById('playButton');
+const progress = document.getElementById('progress');
+const currentTime = document.getElementById('currentTime');
+const duration = document.getElementById('duration');
+const visualizer = document.getElementById('visualizer');
+const verseLabel = document.getElementById('verseLabel');
+const verseText = document.getElementById('verseText');
+const verses = [
+  ['VERSE I', 'In stillness, the barrier rises.\nIn recovery, we return to source.'],
+  ['VERSE VII', 'The old ways remain in the body.\nWe return to what was enough.']
+];
+
+const BAR_COUNT = 72;
+let currentTrack = 0;
+let audioContext;
+let analyser;
+let frequencyData;
+let activeGain;
+let animationFrame;
+let sourceNodes = [];
+const trackPeaks = [null, null];
+const peakLoads = [null, null];
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds)) return '00:00';
+  return String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(Math.floor(seconds % 60)).padStart(2, '0');
+}
+
+function createBars() {
+  visualizer.replaceChildren();
+  for (let index = 0; index < BAR_COUNT; index++) {
+    const bar = document.createElement('i');
+    bar.className = 'visualizer-bar';
+    visualizer.appendChild(bar);
+  }
+}
+
+function fallbackPeaks() {
+  return Array.from({ length: BAR_COUNT }, (_, index) => .14 + Math.abs(Math.sin(index * .47)) * .42 + Math.abs(Math.sin(index * .12)) * .18);
+}
+
+async function loadActualTrackPeaks(index) {
+  if (trackPeaks[index]) return trackPeaks[index];
+  if (peakLoads[index]) return peakLoads[index];
+
+  peakLoads[index] = (async () => {
+    try {
+      const response = await fetch(tracks[index].currentSrc || tracks[index].src);
+      if (!response.ok) throw new Error('Could not fetch audio');
+      const context = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+      const buffer = await context.decodeAudioData(await response.arrayBuffer());
+      const channel = buffer.getChannelData(0);
+      const block = Math.max(1, Math.floor(channel.length / BAR_COUNT));
+      const peaks = [];
+      let maximum = 0;
+
+      for (let index = 0; index < BAR_COUNT; index++) {
+        let peak = 0;
+        const start = index * block;
+        const end = Math.min(channel.length, (index + 1) * block);
+        for (let sample = start; sample < end; sample++) peak = Math.max(peak, Math.abs(channel[sample]));
+        peaks.push(peak);
+        maximum = Math.max(maximum, peak);
+      }
+      trackPeaks[index] = peaks.map((peak) => Math.max(.08, Math.pow(peak / (maximum || 1), .6)));
+    } catch (error) {
+      trackPeaks[index] = fallbackPeaks();
+    } finally {
+      peakLoads[index] = null;
+    }
+    return trackPeaks[index];
+  })();
+
+  return peakLoads[index];
+}
+
+function setupAudioGraph() {
+  if (audioContext) return;
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioContext.createAnalyser();
+  analyser.fftSize = 256;
+  analyser.smoothingTimeConstant = .7;
+  frequencyData = new Uint8Array(analyser.frequencyBinCount);
+  activeGain = audioContext.createGain();
+  activeGain.gain.value = 1;
+
+  tracks.forEach((audio, index) => {
+    const source = audioContext.createMediaElementSource(audio);
+    const trackGain = audioContext.createGain();
+    trackGain.gain.value = index === currentTrack ? 1 : 0;
+    source.connect(trackGain);
+    trackGain.connect(analyser);
+    sourceNodes[index] = trackGain;
+  });
+  analyser.connect(activeGain);
+  activeGain.connect(audioContext.destination);
+}
+
+function setActiveAudioGraph(index) {
+  if (!audioContext) return;
+  sourceNodes.forEach((gain, item) => {
+    gain.gain.cancelScheduledValues(audioContext.currentTime);
+    gain.gain.setValueAtTime(item === index ? 1 : 0, audioContext.currentTime);
+  });
+}
+
+function updatePlayer() {
+  const audio = tracks[currentTrack];
+  playButton.textContent = audio.paused ? '▶' : 'Ⅱ';
+  playButton.setAttribute('aria-label', (audio.paused ? 'Play ' : 'Pause ') + 'Track ' + (currentTrack + 1));
+  progress.value = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  currentTime.textContent = formatTime(audio.currentTime);
+  duration.textContent = formatTime(audio.duration);
+}
+
+function paint(live) {
+  const audio = tracks[currentTrack];
+  const peaks = trackPeaks[currentTrack] || fallbackPeaks();
+  const played = audio.duration ? audio.currentTime / audio.duration : 0;
+  if (live && analyser) analyser.getByteFrequencyData(frequencyData);
+
+  [...visualizer.children].forEach((bar, index) => {
+    const dataIndex = Math.floor((index / (BAR_COUNT - 1)) * (frequencyData ? frequencyData.length - 1 : 0));
+    const liveLevel = live && frequencyData ? Math.pow(frequencyData[dataIndex] / 255, .78) : 0;
+    const height = Math.min(96, 8 + peaks[index] * 51 + liveLevel * 42);
+    const isPlayed = (index + .5) / BAR_COUNT <= played;
+    bar.style.height = height + 'px';
+    bar.style.opacity = isPlayed ? .78 + liveLevel * .22 : .24 + peaks[index] * .21;
+    bar.style.background = isPlayed
+      ? 'linear-gradient(to bottom,#fff9d0,#edc55f 42%,#a46d18)'
+      : 'linear-gradient(to bottom,#9e711f,#6f4a0c 55%,#352304)';
+    bar.style.boxShadow = isPlayed && liveLevel > .12
+      ? '0 0 ' + (5 + liveLevel * 11) + 'px rgba(237,197,95,.88)'
+      : '0 0 4px rgba(201,149,37,.25)';
+  });
+}
+
+function animate() {
+  paint(true);
+  animationFrame = requestAnimationFrame(animate);
+}
+
+function reset() {
+  cancelAnimationFrame(animationFrame);
+  paint(false);
+}
+
+async function selectTrack(index, autoplay = false) {
+  tracks.forEach((audio, item) => {
+    if (item !== index) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  });
+  currentTrack = index;
+  document.querySelectorAll('.track').forEach((row, item) => row.classList.toggle('active', item === index));
+  verseLabel.textContent = verses[index][0];
+  verseText.textContent = verses[index][1];
+  await loadActualTrackPeaks(index);
+  setActiveAudioGraph(index);
+  reset();
+  updatePlayer();
+  if (autoplay) start();
+}
+
+async function start() {
+  try {
+    setupAudioGraph();
+    setActiveAudioGraph(currentTrack);
+    if (audioContext.state === 'suspended') await audioContext.resume();
+    await loadActualTrackPeaks(currentTrack);
+    await tracks[currentTrack].play();
+  } catch (error) {
+    // Deliberately silent: the public UI does not expose asset loading errors.
+  }
+}
+
+createBars();
+loadActualTrackPeaks(0).then(reset);
+
+tracks.forEach((audio, index) => {
+  audio.onloadedmetadata = () => {
+    if (index === currentTrack) {
+      updatePlayer();
+      reset();
+    }
+  };
+  audio.ontimeupdate = () => { if (index === currentTrack) updatePlayer(); };
+  audio.onplay = () => {
+    if (index === currentTrack) {
+      cancelAnimationFrame(animationFrame);
+      animate();
+      updatePlayer();
+    }
+  };
+  audio.onpause = () => {
+    if (index === currentTrack) {
+      reset();
+      updatePlayer();
+    }
+  };
+  audio.onended = () => {
+    if (index === currentTrack && index < tracks.length - 1) selectTrack(index + 1, true);
+    else if (index === currentTrack) {
+      reset();
+      updatePlayer();
+    }
+  };
+});
+
+playButton.onclick = () => tracks[currentTrack].paused ? start() : tracks[currentTrack].pause();
+document.getElementById('previousTrack').onclick = () => selectTrack((currentTrack + tracks.length - 1) % tracks.length, true);
+document.getElementById('nextTrack').onclick = () => selectTrack((currentTrack + 1) % tracks.length, true);
+progress.oninput = () => {
+  const audio = tracks[currentTrack];
+  if (audio.duration) audio.currentTime = (Number(progress.value) / 100) * audio.duration;
+  reset();
+  updatePlayer();
+};
+document.querySelectorAll('.track button').forEach((button) => {
+  button.onclick = () => selectTrack(Number(button.dataset.track), true);
+});
