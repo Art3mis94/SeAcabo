@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,24 +8,26 @@
   <style>
     @font-face{
       font-family:GothamLocal;
-      src:local("Gotham")
+      src:local("Gotham");
+      font-weight:700;
     }
     :root{
       color-scheme:dark;
-      --gold:#d6ae5c
+      --gold:#d6ae5c;
     }
     *{
       box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent
+      -webkit-tap-highlight-color:transparent;
     }
     html,body{
       min-height:100%;
       margin:0;
-      background:#000
+      background:#000;
     }
     body{
       overflow:hidden;
-      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif
+      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif;
+      font-weight:700;
     }
     .home-screen{
       position:relative;
@@ -34,11 +37,11 @@
       place-items:center;
       cursor:pointer;
       touch-action:manipulation;
-      background:#000
+      background:#000;
     }
     .home-screen:focus-visible{
       outline:2px solid var(--gold);
-      outline-offset:-8px
+      outline-offset:-8px;
     }
     .brand-lockup{
       position:absolute;
@@ -48,8 +51,9 @@
       max-width:900px;
       text-align:center;
       transform:translate(-50%,-50%);
-      pointer-events:none
+      pointer-events:none;
     }
+    /* LOGO IMAGE */
     .emblem{
       display:block;
       width:min(140vw,650px);
@@ -59,41 +63,48 @@
       object-fit:contain;
       opacity:1;
       visibility:visible;
-      filter:brightness(1.06) contrast(1.08) drop-shadow(0 3px 12px rgba(0,0,0,.5))
+      filter:brightness(1.06) contrast(1.08) drop-shadow(0 3px 12px rgba(0,0,0,.5));
     }
+    /* SE ACABÓ */
     .brand-name{
       margin:0;
       color:var(--gold);
+      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif;
       font-size:clamp(31px,9.4vw,49px);
       font-weight:700;
-      letter-spacing:3.5px;
+      letter-spacing:0.35em;
       line-height:1.4;
       text-transform:uppercase;
-      white-space:nowrap
+      white-space:nowrap;
     }
+    /* FINIS DOLORIS */
     .motto{
       margin:5px 0 0;
       color:var(--gold);
+      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif;
       font-size:clamp(17px,4.4vw,25px);
-      font-weight:400;
-      letter-spacing:3.5px;
+      font-weight:700;
+      letter-spacing:0.35em;
       line-height:1.4;
-      text-transform:uppercase
+      text-transform:uppercase;
     }
+    /* seacabo.com */
     .site-name{
       position:absolute;
       bottom:max(26px,env(safe-area-inset-bottom));
       left:50%;
       margin:0;
       color:var(--gold);
+      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif;
       font-size:clamp(14px,4.4vw,22px);
-      font-weight:400;
-      letter-spacing:3.5px;
+      font-weight:700;
+      letter-spacing:0.35em;
       line-height:1.4;
       transform:translateX(-50%);
       white-space:nowrap;
-      pointer-events:none
+      pointer-events:none;
     }
+    /* ACCESS MESSAGE */
     .access-loading{
       position:fixed;
       z-index:50;
@@ -102,17 +113,18 @@
       place-items:center;
       background:#000;
       color:var(--gold);
+      font-family:GothamLocal,Gotham,"Montserrat","Avenir Next",Arial,sans-serif;
       font-size:10px;
       font-weight:700;
-      letter-spacing:3.5px;
+      letter-spacing:0.35em;
       line-height:1.4;
       text-transform:uppercase;
-      transition:opacity .25s ease,visibility .25s ease
+      transition:opacity .25s ease,visibility .25s ease;
     }
     .access-loading.hidden{
       opacity:0;
       visibility:hidden;
-      pointer-events:none
+      pointer-events:none;
     }
     @media(min-width:700px){
       .home-screen{
@@ -120,39 +132,56 @@
         min-height:100vh;
         margin:auto;
         border-right:1px solid #28231a;
-        border-left:1px solid #28231a
+        border-left:1px solid #28231a;
       }
       .brand-lockup{
         top:45%;
-        width:100%
+        width:100%;
       }
       .emblem{
         width:650px;
-        max-width:120vw
+        max-width:120vw;
+        transform:translateX(-60px);
       }
     }
   </style>
 </head>
 <body>
-  <div id="accessLoading" class="access-loading">Verifying access</div>
-
+  <div id="accessLoading" class="access-loading">
+    Verifying access
+  </div>
   <audio id="seacaboJingle" preload="auto">
     <source src="seacabo_jingle.mp3" type="audio/mpeg">
   </audio>
-
-  <main id="homeScreen" class="home-screen" role="button" tabindex="0" aria-label="Tap once to play the anthem, then tap again to enter Haus of Recovery">
-    <div class="brand-lockup">
-      <img id="emblem" class="emblem" src="logo2.jpeg" alt="SE ACABÓ logo">
-      <p class="brand-name">SE ACABÓ</p>
-      <p class="motto">FINIS DOLORIS</p>
-    </div>
-    <p class="site-name">seacabo.com</p>
+  <main
+    id="homeScreen"
+    class="home-screen"
+    role="button"
+    tabindex="0"
+    aria-label="Tap once to play the anthem, then tap again to enter Haus of Recovery"
+  >
+<div class="brand-lockup">
+  <img
+    id="emblem"
+    class="emblem"
+    src="logo2.jpeg"
+    alt="SE ACABÓ logo"
+  >
+  <p class="brand-name">SE ACABÓ</p>
+  <p class="motto">FINIS DOLORIS</p>
+</div>
+<p class="site-name">seacabo.com</p>
   </main>
-
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-    import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import {
+      getAuth,
+      setPersistence,
+      browserLocalPersistence,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
     const firebaseConfig = {
       apiKey: "AIzaSyDc9zNGMfAWAAWw5NJULTDs558VG6lRXvE",
       authDomain: "seacabo-47534.firebaseapp.com",
@@ -162,13 +191,13 @@
       appId: "1:69526242796:web:179ee35e8c7a746669acc9",
       measurementId: "G-WH7ER7NL6W"
     };
-
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const accessLoading = document.getElementById("accessLoading");
-
-    await setPersistence(auth, browserLocalPersistence).catch(function () {});
-
+    await setPersistence(
+      auth,
+      browserLocalPersistence
+    ).catch(function () {});
     onAuthStateChanged(auth, function (user) {
       if (!user) {
         window.location.replace("signin.html");
@@ -177,7 +206,6 @@
       accessLoading.classList.add("hidden");
     });
   </script>
-
   <script>
     var homeScreen=document.getElementById("homeScreen");
     var jingle=document.getElementById("seacaboJingle");
@@ -185,7 +213,6 @@
     var canEnter=false;
     var isNavigating=false;
     var lastTouchTime=0;
-
     function activateHome(){
       if(isNavigating)return;
       if(!firstTapComplete){
@@ -201,24 +228,31 @@
       isNavigating=true;
       window.location.href="haus.html";
     }
-
-    homeScreen.addEventListener("touchstart",function(event){
-      lastTouchTime=Date.now();
-      event.preventDefault();
-      activateHome();
-    },{passive:false});
-
-    homeScreen.addEventListener("click",function(){
-      if(Date.now()-lastTouchTime<700)return;
-      activateHome();
-    });
-
-    homeScreen.addEventListener("keydown",function(event){
-      if(event.key==="Enter"||event.key===" "){
+    homeScreen.addEventListener(
+      "touchstart",
+      function(event){
+        lastTouchTime=Date.now();
         event.preventDefault();
         activateHome();
+      },
+      {passive:false}
+    );
+    homeScreen.addEventListener(
+      "click",
+      function(){
+        if(Date.now()-lastTouchTime<700)return;
+        activateHome();
       }
-    });
+    );
+    homeScreen.addEventListener(
+      "keydown",
+      function(event){
+        if(event.key==="Enter"||event.key===" "){
+          event.preventDefault();
+          activateHome();
+        }
+      }
+    );
   </script>
 </body>
 </html>
