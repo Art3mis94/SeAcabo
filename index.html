@@ -53,13 +53,13 @@
       transform:translate(-50%,-50%);
       pointer-events:none;
     }
-    /* LOGO IMAGE */
+    /* LOGO IMAGE — MOBILE */
     .emblem{
       display:block;
       width:min(140vw,650px);
       height:auto;
       margin:0 auto 18px;
-      transform:translateX(-60px);
+      transform:translateX(-130px);
       object-fit:contain;
       opacity:1;
       visibility:visible;
@@ -125,24 +125,6 @@
       opacity:0;
       visibility:hidden;
       pointer-events:none;
-    }
-    @media(min-width:700px){
-      .home-screen{
-        max-width:540px;
-        min-height:100vh;
-        margin:auto;
-        border-right:1px solid #28231a;
-        border-left:1px solid #28231a;
-      }
-      .brand-lockup{
-        top:45%;
-        width:100%;
-      }
-      .emblem{
-        width:650px;
-        max-width:120vw;
-        transform:translateX(-60px);
-      }
     }
   </style>
 </head>
