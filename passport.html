@@ -1,17 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coming Soon — SE ACABÓ</title>
-<style>
-:root{--black:#000;--gold:#c99525;--gold-light:#edc55f;--gold-dark:#76520f}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{min-height:100%;margin:0;background:var(--black);color:var(--gold-light);font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif}body{overflow-x:hidden}.app{width:min(100%,540px);min-height:100vh;margin:auto;padding-bottom:90px;background:#000;border-inline:1px solid #211805}.topbar{height:108px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;padding:18px 24px 6px;border-bottom:1px solid var(--gold-dark)}.hamburger{width:42px;height:42px;padding:8px;border:0;background:transparent;cursor:pointer}.hamburger span{display:block;width:27px;height:3px;margin:4px 0;border-radius:10px;background:var(--gold-light)}.header-title{text-align:center}.header-title h1{margin:0;color:var(--gold-light);font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif;font-size:20px;font-weight:700;letter-spacing:.24em}.header-title p{margin:7px 0 0;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.2em}.music-button{width:42px;height:42px;place-self:center end;padding:0;color:var(--gold-light);background:#000;border:1px solid var(--gold);border-radius:50%;cursor:pointer;font-size:18px;line-height:1}.music-button.playing{color:var(--gold-light);background:#000;border-color:var(--gold-light)}.coming{min-height:calc(100vh - 198px);display:grid;place-items:center;padding:30px 22px}.coming-card{width:100%;max-width:410px;min-height:235px;display:grid;place-items:center;padding:34px 25px;text-align:center;background:#000;border:1px solid var(--gold);border-radius:13px}.eyebrow{margin:0 0 17px;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.24em}.coming h2{margin:0;color:var(--gold-light);font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif;font-size:28px;font-weight:700;letter-spacing:.16em;line-height:1.1}.rule{width:80px;height:1px;margin:20px auto;background:var(--gold)}.coming p{max-width:270px;margin:0;color:var(--gold-light);font-size:11px;font-weight:500;letter-spacing:.06em;line-height:1.6}.bottom-nav{position:fixed;z-index:10;bottom:0;left:50%;display:grid;width:min(100%,540px);height:78px;grid-template-columns:repeat(7,1fr);padding-bottom:env(safe-area-inset-bottom);transform:translateX(-50%);background:#000;border-top:1px solid var(--gold-dark)}.bottom-nav a{display:grid;gap:5px;place-content:center;color:var(--gold);text-decoration:none;font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif;font-size:8px;font-weight:600;text-align:center}.bottom-nav a.active{color:var(--gold-light)}.bottom-nav .nav-icon{font-size:20px;line-height:1}.menu-layer{position:fixed;z-index:120;inset:0;display:none;background:#000c}.menu-layer.open{display:block}.drawer{width:min(310px,84vw);height:100%;padding:25px 21px;background:#000;border-right:1px solid var(--gold-dark)}.drawer-head{display:flex;justify-content:space-between;margin-bottom:25px}.drawer h3{margin:0;color:var(--gold-light);font-family:Gotham,'Montserrat','Avenir Next',Arial,sans-serif;font-size:20px;letter-spacing:.15em}.drawer button{border:0;background:#000;color:var(--gold-light);font-size:29px;cursor:pointer}.drawer a{display:block;padding:15px 2px;color:var(--gold-light);border-bottom:1px solid var(--gold-dark);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.11em}@media(max-width:360px){.topbar{padding-inline:16px}.coming h2{font-size:24px}.bottom-nav a{font-size:7px}.bottom-nav .nav-icon{font-size:18px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Passport — SE ACABÓ</title>
+  <style>
+    :root{--black:#000;--ink:#090806;--gold:#c99525;--gold-light:#edc55f;--gold-dark:#76520f;--cream:#f6e9c7;--muted:#bdaa78;--line:#49330b}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{min-height:100%;margin:0;background:#000;color:var(--cream);font-family:Gotham,"Montserrat","Avenir Next",Arial,sans-serif}body{overflow-x:hidden}.app{width:min(100%,540px);min-height:100vh;margin:auto;padding-bottom:96px;background:#000;border-inline:1px solid #211805}.topbar{height:108px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;padding:18px 24px 6px;border-bottom:1px solid var(--gold-dark)}.hamburger{width:42px;height:42px;padding:8px;border:0;background:#000;cursor:pointer}.hamburger span{display:block;width:27px;height:3px;margin:4px 0;border-radius:10px;background:var(--gold-light)}.header-title{text-align:center}.header-title h1{margin:0;color:var(--gold-light);font-size:20px;font-weight:700;letter-spacing:.23em}.header-title p{margin:7px 0 0;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.18em}.content{padding:18px 20px 12px}.loading{min-height:calc(100vh - 204px);display:grid;place-items:center;text-align:center}.loading h2{margin:0;color:var(--gold-light);font-size:15px;letter-spacing:.14em}.loading p{margin:11px 0 0;color:var(--muted);font-size:11px}.passport-page{display:none}.passport-page.visible{display:block}.passport-card,.section-card,.pending-card{margin-bottom:14px;border:1px solid var(--gold-dark);border-radius:12px;background:linear-gradient(145deg,#120e05,#000 55%,#160f04);overflow:hidden}.passport-card{position:relative;padding:22px;min-height:308px}.passport-card:before{content:"";position:absolute;inset:10px;border:1px solid #3d2a08;border-radius:7px;pointer-events:none}.passport-card>*{position:relative;z-index:1}.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.brand-mark{width:48px;height:48px;object-fit:contain;filter:brightness(1.03) contrast(1.08)}.card-kicker,.section-kicker{margin:0;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.16em}.passport-card h2{margin:9px 0 0;color:var(--gold-light);font-size:20px;line-height:1.2;letter-spacing:.1em}.status{display:inline-flex;align-items:center;gap:7px;padding:7px 9px;color:var(--gold-light);border:1px solid var(--gold);border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.12em}.status:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-light);box-shadow:0 0 8px var(--gold-light)}.member-name{margin:36px 0 5px;color:#fff2c8;font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.member-number{margin:0;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.15em}.member-meta{display:flex;justify-content:space-between;gap:18px;margin-top:26px;padding-top:13px;border-top:1px solid var(--line)}.member-meta div{display:grid;gap:5px}.member-meta span{color:var(--muted);font-size:8px;font-weight:700;letter-spacing:.13em}.member-meta strong{color:var(--cream);font-size:11px;letter-spacing:.06em}.pending-card{padding:23px}.pending-card h2{margin:10px 0;color:var(--gold-light);font-size:18px;letter-spacing:.1em}.pending-card p{margin:0;color:var(--cream);font-size:13px;line-height:1.6}.pending-card .rule{width:68px;height:1px;margin:18px 0;background:var(--gold)}.section-card{padding:19px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.section-head h3{margin:7px 0 0;color:var(--gold-light);font-size:14px;letter-spacing:.11em}.section-head a{color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.1em;text-decoration:none}.privileges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.privilege{min-height:102px;padding:12px 10px;border:1px solid #463109;border-radius:8px;background:#050401}.privilege span{display:block;color:var(--muted);font-size:8px;font-weight:700;letter-spacing:.1em;line-height:1.35}.privilege strong{display:block;margin-top:10px;color:var(--gold-light);font-size:16px;letter-spacing:.04em}.privilege small{display:block;margin-top:5px;color:var(--cream);font-size:9px;line-height:1.35}.ownership-list,.ledger-list{display:grid}.ownership-row,.ledger-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid #332609}.ownership-row:first-child,.ledger-row:first-child{border-top:0;padding-top:0}.ownership-copy strong,.ledger-copy strong{display:block;color:var(--cream);font-size:12px;letter-spacing:.04em}.ownership-copy span,.ledger-copy span{display:block;margin-top:5px;color:var(--muted);font-size:9px;line-height:1.4}.verified{color:var(--gold-light);font-size:9px;font-weight:700;letter-spacing:.09em;white-space:nowrap}.ledger-day{min-width:50px;color:var(--gold);font:700 11px 'Courier New',monospace}.empty-state{margin:0;color:var(--muted);font-size:12px;line-height:1.55}.bottom-nav{position:fixed;z-index:99;bottom:0;left:50%;display:grid;width:min(100%,540px);height:78px;grid-template-columns:repeat(7,1fr);padding-bottom:env(safe-area-inset-bottom);transform:translateX(-50%);background:#000;border-top:1px solid var(--gold-dark)}.bottom-nav a{display:grid;gap:5px;place-content:center;color:var(--gold);text-align:center;text-decoration:none;font-size:8px;font-weight:600}.bottom-nav a.active{color:var(--gold-light)}.nav-icon{font-size:20px;line-height:1}.menu-layer{position:fixed;z-index:120;inset:0;display:none;background:#000c}.menu-layer.open{display:block}.drawer{width:min(310px,84vw);height:100%;padding:25px 21px;background:#000;border-right:1px solid var(--gold-dark)}.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.drawer h3{margin:0;color:var(--gold-light);font-size:20px;letter-spacing:.15em}.drawer button{border:0;background:#000;color:var(--gold-light);font-size:29px;cursor:pointer}.drawer a{display:block;padding:15px 2px;color:var(--gold-light);border-bottom:1px solid var(--gold-dark);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.11em}.drawer a[hidden]{display:none!important}.drawer a.master-link{color:#fff0ad}@media(max-width:390px){.content{padding-inline:14px}.member-name{font-size:20px}.privileges{gap:6px}.privilege{padding:10px 8px}.privilege strong{font-size:14px}.bottom-nav a{font-size:7px}.nav-icon{font-size:18px}}
+  </style>
 </head>
 <body>
-<audio id="seacaboJingle" preload="auto"><source src="seacabo_jingle.mp3" type="audio/mpeg"></audio>
-<div class="app"><header class="topbar"><button class="hamburger" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span><span></span></button><div class="header-title"><h1>SE ACABÓ</h1><p>HAUS OF RECOVERY</p></div><button id="musicButton" class="music-button" type="button" aria-label="Play Se Acabó jingle" aria-pressed="false">♫</button></header><main class="coming"><section class="coming-card"><div><p class="eyebrow">THE HAUS IS PREPARING</p><h2>COMING SOON</h2></section></main><nav class="bottom-nav" aria-label="Primary navigation"><a href="haus.html"><span class="nav-icon">⌂</span><span>HAUS</span></a><a href="passport.html"><span class="nav-icon">▣</span><span>ARCHIVE</span></a><a href="drops.html"><span class="nav-icon">◷</span><span>DROPS</span></a><a href="passport.html"><span class="nav-icon">♙</span><span>PASSPORT</span></a><a href="library.html"><span class="nav-icon">▦</span><span>LIBRARY</span></a><a href="journal.html"><span class="nav-icon">◩</span><span>JOURNAL</span></a><a href="account.html"><span class="nav-icon">♙</span><span>ACCOUNT</span></a></nav></div>
-<div id="menuLayer" class="menu-layer"><aside class="drawer"><div class="drawer-head"><h3>HAUS</h3><button id="closeMenu" type="button" aria-label="Close menu">×</button></div><a href="haus.html">HOME SANCTUM</a><a href="passport.html">VINTAGE VAULT</a><a href="drops.html">ALLOCATION MANAGER</a><a href="passport.html">MEMBER PASSPORT</a><a href="library.html">BARRIER ACADEMY</a><a href="journal.html">FOUNDER DISPATCHES</a><a href="account.html">PREFERENCES &amp; IDENTITY</a></aside></div>
-<script>const menuLayer=document.getElementById('menuLayer');document.getElementById('menuButton').onclick=()=>menuLayer.classList.add('open');document.getElementById('closeMenu').onclick=()=>menuLayer.classList.remove('open');menuLayer.onclick=e=>{if(e.target===menuLayer)menuLayer.classList.remove('open')};const jingle=document.getElementById('seacaboJingle'),music=document.getElementById('musicButton');function updateMusic(){const playing=!jingle.paused;music.textContent=playing?'Ⅱ':'♫';music.classList.toggle('playing',playing);music.setAttribute('aria-pressed',String(playing));music.setAttribute('aria-label',playing?'Pause Se Acabó jingle':'Play Se Acabó jingle')}music.onclick=()=>{if(jingle.paused)jingle.play().catch(()=>{});else jingle.pause()};jingle.onplay=updateMusic;jingle.onpause=updateMusic;jingle.onended=updateMusic;</script>
+  <div class="app">
+    <header class="topbar">
+      <button id="menuButton" class="hamburger" type="button" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <div class="header-title"><h1>PASSPORT</h1><p>THE MEMBER LEDGER</p></div>
+      <div aria-hidden="true"></div>
+    </header>
+
+    <main class="content">
+      <section id="loading" class="loading"><div><h2>VERIFYING PASSPORT</h2><p>Retrieving your Haus identity.</p></div></section>
+
+      <section id="passportPage" class="passport-page">
+        <article id="activePassport" class="passport-card" hidden>
+          <div class="card-top">
+            <div>
+              <p class="card-kicker">SE ACABÓ PASSPORT</p>
+              <h2>HAUS OF RECOVERY</h2>
+            </div>
+            <img class="brand-mark" src="logo.jpeg" alt="SE ACABÓ">
+          </div>
+          <span class="status">ACTIVE</span>
+          <p id="memberName" class="member-name">PASSPORT HOLDER</p>
+          <p id="memberNumber" class="member-number">MEMBER 000000</p>
+          <div class="member-meta">
+            <div><span>MEMBER SINCE</span><strong id="memberSince">—</strong></div>
+            <div><span>PASSPORT STATUS</span><strong>VERIFIED</strong></div>
+          </div>
+        </article>
+
+        <article id="pendingPassport" class="pending-card" hidden>
+          <p class="section-kicker">SE ACABÓ PASSPORT</p>
+          <h2>PASSPORT PENDING</h2>
+          <div class="rule"></div>
+          <p>Your first qualifying Se Acabó purchase establishes your Passport. Ownership creates your identity inside the Haus.</p>
+        </article>
+
+        <article class="section-card">
+          <div class="section-head"><div><p class="section-kicker">YOUR PRIVILEGES</p><h3>THE HAUS RATE</h3></div></div>
+          <div class="privileges">
+            <div class="privilege"><span>HAUS RATE</span><strong id="hausRate">10%</strong><small>Eligible standard purchases</small></div>
+            <div class="privilege"><span>DROP ACCESS</span><strong id="dropAccess">MEMBER</strong><small>Selected early allocation</small></div>
+            <div class="privilege"><span>RECOVERY CREDIT</span><strong id="recoveryCredit">£0.00</strong><small>Available ledger balance</small></div>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <div class="section-head"><div><p class="section-kicker">OWNERSHIP</p><h3>PRODUCT PASSPORTS</h3></div><a href="archive.html">ARCHIVE →</a></div>
+          <div id="ownershipList" class="ownership-list"><p class="empty-state">No verified product records are attached to this Passport yet.</p></div>
+        </article>
+
+        <article class="section-card">
+          <div class="section-head"><div><p class="section-kicker">RECOVERY</p><h3>RECOVERY LEDGER</h3></div><a href="journal.html">JOURNAL →</a></div>
+          <div id="ledgerList" class="ledger-list"><p class="empty-state">Your recovery record begins when you add your first session.</p></div>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <a href="haus.html"><span class="nav-icon">⌂</span><span>HAUS</span></a><a href="archive.html"><span class="nav-icon">▣</span><span>ARCHIVE</span></a><a href="drops.html"><span class="nav-icon">◷</span><span>DROPS</span></a><a class="active" href="passport.html"><span class="nav-icon">♙</span><span>PASSPORT</span></a><a href="library.html"><span class="nav-icon">▦</span><span>LIBRARY</span></a><a href="journal.html"><span class="nav-icon">◩</span><span>JOURNAL</span></a><a href="account.html"><span class="nav-icon">♙</span><span>ACCOUNT</span></a>
+    </nav>
+  </div>
+
+  <div id="menuLayer" class="menu-layer"><aside class="drawer"><div class="drawer-head"><h3>HAUS</h3><button id="closeMenu" type="button" aria-label="Close menu">×</button></div><a href="haus.html">HOME SANCTUM</a><a href="archive.html">VINTAGE VAULT</a><a href="drops.html">ALLOCATION MANAGER</a><a href="passport.html">MEMBER PASSPORT</a><a href="library.html">BARRIER ACADEMY</a><a href="journal.html">FOUNDER DISPATCHES</a><a href="account.html">PREFERENCES &amp; IDENTITY</a><a id="masterLedgerLink" class="master-link" href="admin.html" hidden>MASTER LEDGER</a></aside></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, collection, getDocs, limit, orderBy, query } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    const firebaseConfig={apiKey:"AIzaSyDc9zNGMfAWAAWw5NJULTDs558VG6lRXvE",authDomain:"seacabo-47534.firebaseapp.com",projectId:"seacabo-47534",storageBucket:"seacabo-47534.firebasestorage.app",messagingSenderId:"69526242796",appId:"1:69526242796:web:179ee35e8c7a746669acc9",measurementId:"G-WH7ER7NL6W"};
+    const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+    const loading=document.getElementById("loading"),passportPage=document.getElementById("passportPage"),activePassport=document.getElementById("activePassport"),pendingPassport=document.getElementById("pendingPassport"),masterLedgerLink=document.getElementById("masterLedgerLink"),ownershipList=document.getElementById("ownershipList"),ledgerList=document.getElementById("ledgerList");
+    const formatDate=value=>{if(!value)return"—";const date=value.toDate?value.toDate():new Date(value);return Number.isNaN(date.getTime())?"—":date.toLocaleDateString("en-GB",{month:"short",year:"numeric"}).toUpperCase()};
+    const formatMoney=pence=>new Intl.NumberFormat("en-GB",{style:"currency",currency:"GBP"}).format((Number(pence)||0)/100);
+    const safe=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char]));
+
+    async function renderPurchases(uid){
+      try{const snapshot=await getDocs(query(collection(db,"members",uid,"purchases"),orderBy("purchasedAt","desc"),limit(8)));if(snapshot.empty)return;snapshot.forEach(item=>{const data=item.data(),row=document.createElement("div");row.className="ownership-row";row.innerHTML=`<div class="ownership-copy"><strong>${safe(data.productTitle||"SE ACABÓ PRODUCT")}</strong><span>${safe(data.batchNumber?"BATCH "+data.batchNumber:"PRODUCT PASSPORT")} · ${formatDate(data.purchasedAt)}</span></div><span class="verified">VERIFIED</span>`;ownershipList.appendChild(row)});const empty=ownershipList.querySelector(".empty-state");if(empty)empty.remove()}catch(error){/* Purchases are optional until Shopify webhook sync is implemented. */}}
+    async function renderLedger(uid){
+      try{const snapshot=await getDocs(query(collection(db,"members",uid,"recoverySessions"),orderBy("createdAt","desc"),limit(5)));if(snapshot.empty)return;snapshot.forEach(item=>{const data=item.data(),row=document.createElement("div");row.className="ledger-row";row.innerHTML=`<span class="ledger-day">DAY ${String(data.day||1).padStart(3,"0")}</span><div class="ledger-copy"><strong>${safe(data.title||"Recovery session logged")}</strong><span>${safe(data.note||formatDate(data.createdAt))}</span></div>`;ledgerList.appendChild(row)});const empty=ledgerList.querySelector(".empty-state");if(empty)empty.remove()}catch(error){/* Ledger is optional until sessions are created. */}}
+
+    await setPersistence(auth,browserLocalPersistence).catch(()=>{});
+    onAuthStateChanged(auth,async user=>{
+      if(!user){window.location.replace("signin.html");return}
+      try{
+        const [memberDoc,adminDoc]=await Promise.all([getDoc(doc(db,"members",user.uid)),getDoc(doc(db,"admins",user.uid))]);
+        const member=memberDoc.exists()?memberDoc.data():{};
+        const role=adminDoc.exists()?adminDoc.data().role:null;
+        masterLedgerLink.hidden=!(role==="master"||role==="admin");
+        const active=member.passportStatus==="active";
+        activePassport.hidden=!active;pendingPassport.hidden=active;
+        document.getElementById("memberName").textContent=(member.displayName||user.displayName||"PASSPORT HOLDER").toUpperCase();
+        document.getElementById("memberNumber").textContent="MEMBER "+(member.memberNumber||"000000");
+        document.getElementById("memberSince").textContent=formatDate(member.memberSince||member.createdAt);
+        document.getElementById("hausRate").textContent=(member.hausRatePercent??10)+"%";
+        document.getElementById("dropAccess").textContent=(member.dropAccess||"MEMBER").toUpperCase();
+        document.getElementById("recoveryCredit").textContent=formatMoney(member.recoveryCreditPence);
+        await Promise.all([renderPurchases(user.uid),renderLedger(user.uid)]);
+        loading.style.display="none";passportPage.classList.add("visible");
+      }catch(error){loading.innerHTML="<div><h2>PASSPORT UNAVAILABLE</h2><p>Please refresh or return to the Haus.</p></div>"}
+    });
+  </script>
+
+  <script>
+    const menuLayer=document.getElementById("menuLayer");
+    document.getElementById("menuButton").onclick=()=>menuLayer.classList.add("open");
+    document.getElementById("closeMenu").onclick=()=>menuLayer.classList.remove("open");
+    menuLayer.onclick=event=>{if(event.target===menuLayer)menuLayer.classList.remove("open")};
+  </script>
 </body>
 </html>
