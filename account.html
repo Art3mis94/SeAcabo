@@ -10,24 +10,233 @@
 </head>
 <body>
 <audio id="seacaboJingle" preload="auto"><source src="seacabo_jingle.mp3" type="audio/mpeg"></audio>
-<div class="app"><header class="topbar"><button class="hamburger" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span><span></span></button><div class="header-title"><h1>ACCOUNT</h1><p>PREFERENCES &amp; IDENTITY</p></div><button id="musicButton" class="music-button" type="button" aria-label="Play Se Acabó jingle" aria-pressed="false">♫</button></header><main class="content"><p id="suspensionNote" class="suspension-note">Your membership is currently suspended. Please contact the Haus for assistance.</p><section class="profile-card"><div class="profile"><div class="seal">SA</div><div class="profile-copy"><h2 id="displayName">LOADING…</h2><p>Member No. <span id="memberNumber">—</span></p><p id="ledgerTier" class="gold">SOVEREIGN TIER</p><p>Member since <span id="memberSince">—</span></p><p id="profileEmail" style="color:#bdaa78"></p><div class="badges"><span id="statusBadge" class="badge">LOADING STATUS</span><span id="adminBadge" class="badge admin" hidden>ADMIN</span></div></div></div><button class="signout" id="signOutButton" type="button"><span>⎋ &nbsp; Sign Out</span><span>›</span></button><p class="message" id="message" aria-live="polite"></p></section><section class="section-card shopify-card"><h2>Shopify Identity</h2><div class="shopify-status"><div class="shopify-icon">S</div><div class="shopify-copy"><h3 id="shopifyHeading">Connect your store account</h3><p id="shopifyDescription">Link your Shopify customer account to keep purchases and product records connected to your Passport.</p><span id="shopifyBadge" class="connection-badge">NOT LINKED</span></div></div><div class="shopify-actions"><button id="connectShopifyButton" class="shopify-button" type="button">LINK SHOPIFY ACCOUNT</button><button id="disconnectShopifyButton" class="shopify-button secondary" type="button" hidden>DISCONNECT</button></div></section><section class="section-card"><h2>Notification Preferences</h2><div class="preference"><div class="pref-icon">▢</div><div class="pref-copy"><h3>VIP Drop Windows</h3><p>Get alerts for member drops</p></div><button class="toggle on" type="button" data-setting="vipDropWindows" aria-label="Toggle VIP Drop Windows" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">♧</div><div class="pref-copy"><h3>Nocturnal Recovery Reminders</h3><p>Evening routine nudges</p></div><button class="toggle on" type="button" data-setting="nocturnalReminders" aria-label="Toggle Nocturnal Recovery Reminders" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">▣</div><div class="pref-copy"><h3>Haus Notices</h3><p>Important updates &amp; studies</p></div><button class="toggle on" type="button" data-setting="hausNotices" aria-label="Toggle Haus Notices" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">◇</div><div class="pref-copy"><h3>Library &amp; Academy</h3><p>New content &amp; masterclasses</p></div><button class="toggle on" type="button" data-setting="libraryAcademy" aria-label="Toggle Library and Academy" aria-pressed="true"></button></div></section><section class="section-card"><h2>Session Management</h2><div class="session"><div class="session-icon">◉</div><div><h3>Active Session</h3><p>Current browser session</p><p class="online">▪ Online</p></div></div></section></main><nav class="bottom-nav"><a href="haus.html"><span class="nav-icon">⌂</span><span>HAUS</span></a><a href="archive.html"><span class="nav-icon">▣</span><span>ARCHIVE</span></a><a href="drops.html"><span class="nav-icon">◷</span><span>DROPS</span></a><a href="passport.html"><span class="nav-icon">♙</span><span>PASSPORT</span></a><a href="library.html"><span class="nav-icon">▦</span><span>LIBRARY</span></a><a href="journal.html"><span class="nav-icon">◩</span><span>JOURNAL</span></a><a class="active" href="account.html"><span class="nav-icon">♙</span><span>ACCOUNT</span></a></nav></div>
+<div class="app"><header class="topbar"><button class="hamburger" id="menuButton" type="button" aria-label="Open menu"><span></span><span></span><span></span></button><div class="header-title"><h1>ACCOUNT</h1><p>PREFERENCES &amp; IDENTITY</p></div><button id="musicButton" class="music-button" type="button" aria-label="Play Se Acabó jingle" aria-pressed="false">♫</button></header><main class="content"><p id="suspensionNote" class="suspension-note">Your membership is currently suspended. Please contact the Haus for assistance.</p><section class="profile-card"><div class="profile"><div class="seal">SA</div><div class="profile-copy"><h2 id="displayName">LOADING…</h2><p>Member No. <span id="memberNumber">—</span></p><p id="ledgerTier" class="gold">SOVEREIGN TIER</p><p>Member since <span id="memberSince">—</span></p><p id="profileEmail" style="color:#bdaa78"></p><div class="badges"><span id="statusBadge" class="badge">LOADING STATUS</span><span id="adminBadge" class="badge admin" hidden>ADMIN</span></div></div></div><button class="signout" id="signOutButton" type="button"><span>⎋ &nbsp; Sign Out</span><span>›</span></button><p class="message" id="message" aria-live="polite"></p></section><section class="section-card shopify-card"><h2>Shopify Identity</h2><div class="shopify-status"><div class="shopify-icon">S</div><div class="shopify-copy"><h3 id="shopifyHeading">Connect your store account</h3><p id="shopifyDescription">Link your Shopify store domain to keep purchases and product records connected to your Passport.</p><span id="shopifyBadge" class="connection-badge">NOT LINKED</span></div></div><div class="shopify-actions"><button id="connectShopifyButton" class="shopify-button" type="button">LINK SHOPIFY</button><button id="disconnectShopifyButton" class="shopify-button secondary" type="button" hidden>DISCONNECT</button></div><div id="shopifyLinkForm" style="display:none;margin-top:10px;"><input id="shopDomainInput" type="text" placeholder="your-store.myshopify.com" style="width:100%;padding:10px;border:1px solid var(--gold-dark);border-radius:4px;background:#000;color:var(--cream);font-size:12px;margin-bottom:8px;"><button id="saveShopifyButton" class="shopify-button" type="button">SAVE</button><button id="cancelShopifyButton" class="shopify-button secondary" type="button" style="margin-top:6px;">CANCEL</button></div></section><section class="section-card"><h2>Notification Preferences</h2><div class="preference"><div class="pref-icon">▢</div><div class="pref-copy"><h3>VIP Drop Windows</h3><p>Get alerts for member drops</p></div><button class="toggle on" type="button" data-setting="vipDropWindows" aria-label="Toggle VIP Drop Windows" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">♧</div><div class="pref-copy"><h3>Nocturnal Recovery Reminders</h3><p>Evening routine nudges</p></div><button class="toggle on" type="button" data-setting="nocturnalReminders" aria-label="Toggle Nocturnal Recovery Reminders" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">▣</div><div class="pref-copy"><h3>Haus Notices</h3><p>Important updates &amp; studies</p></div><button class="toggle on" type="button" data-setting="hausNotices" aria-label="Toggle Haus Notices" aria-pressed="true"></button></div><div class="preference"><div class="pref-icon">◇</div><div class="pref-copy"><h3>Library &amp; Academy</h3><p>New content &amp; masterclasses</p></div><button class="toggle on" type="button" data-setting="libraryAcademy" aria-label="Toggle Library and Academy" aria-pressed="true"></button></div></section><section class="section-card"><h2>Session Management</h2><div class="session"><div class="session-icon">◉</div><div><h3>Active Session</h3><p>Current browser session</p><p class="online">▪ Online</p></div></div></section></main><nav class="bottom-nav"><a href="haus.html"><span class="nav-icon">⌂</span><span>HAUS</span></a><a href="archive.html"><span class="nav-icon">▣</span><span>ARCHIVE</span></a><a href="drops.html"><span class="nav-icon">◷</span><span>DROPS</span></a><a href="passport.html"><span class="nav-icon">♙</span><span>PASSPORT</span></a><a href="library.html"><span class="nav-icon">▦</span><span>LIBRARY</span></a><a href="journal.html"><span class="nav-icon">◩</span><span>JOURNAL</span></a><a class="active" href="account.html"><span class="nav-icon">♙</span><span>ACCOUNT</span></a></nav></div>
 <div class="menu-layer" id="menuLayer"><aside class="drawer"><div class="drawer-head"><h3>HAUS</h3><button id="closeMenu" type="button" aria-label="Close menu">×</button></div><a href="haus.html">HOME SANCTUM</a><a href="archive.html">VINTAGE VAULT</a><a href="drops.html">ALLOCATION MANAGER</a><a href="passport.html">MEMBER PASSPORT</a><a href="library.html">BARRIER ACADEMY</a><a href="journal.html">FOUNDER DISPATCHES</a><a href="account.html">PREFERENCES &amp; IDENTITY</a><a id="masterLedgerLink" class="master-link" href="admin.html" hidden>MASTER LEDGER</a></aside></div>
 <script type="module">
 import{initializeApp}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
 import{getAuth,setPersistence,browserLocalPersistence,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import{getFirestore,doc,getDoc,setDoc,serverTimestamp}from'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 const firebaseConfig={apiKey:"AIzaSyDc9zNGMfAWAAWw5NJULTDs558VG6lRXvE",authDomain:"seacabo-47534.firebaseapp.com",projectId:"seacabo-47534",storageBucket:"seacabo-47534.firebasestorage.app",messagingSenderId:"69526242796",appId:"1:69526242796:web:179ee35e8c7a746669acc9",measurementId:"G-WH7ER7NL6W"};
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);const displayName=document.getElementById('displayName'),number=document.getElementById('memberNumber'),since=document.getElementById('memberSince'),email=document.getElementById('profileEmail'),tier=document.getElementById('ledgerTier'),message=document.getElementById('message'),statusBadge=document.getElementById('statusBadge'),adminBadge=document.getElementById('adminBadge'),suspensionNote=document.getElementById('suspensionNote'),masterLedgerLink=document.getElementById('masterLedgerLink'),shopifyHeading=document.getElementById('shopifyHeading'),shopifyDescription=document.getElementById('shopifyDescription'),shopifyBadge=document.getElementById('shopifyBadge'),connectShopifyButton=document.getElementById('connectShopifyButton'),disconnectShopifyButton=document.getElementById('disconnectShopifyButton');
-function makeMemberNumber(uid){let value=0;for(let i=0;i<uid.length;i++)value=(value*31+uid.charCodeAt(i))%1000000;return String(value).padStart(6,'0')}function memberName(user){return(user.displayName||user.email||'MEMBER').split('@')[0].replace(/[._-]+/g,' ').toUpperCase()}function memberYear(value){return value&&value.toDate?value.toDate().getFullYear():value||new Date().getFullYear()}function setToggles(settings,disabled=false){document.querySelectorAll('.toggle').forEach(t=>{const on=settings?.[t.dataset.setting]!==false;t.classList.toggle('on',on);t.setAttribute('aria-pressed',String(on));t.disabled=disabled})}function showStatus(status){const value=(status||'ACTIVE').toUpperCase();statusBadge.textContent=value;statusBadge.className='badge '+(value==='ACTIVE'?'active':value==='SUSPENDED'?'suspended':'');suspensionNote.classList.toggle('visible',value==='SUSPENDED')}
-function renderShopifyStatus(link){const linked=link?.status==='linked'&&link?.shopifyCustomerId;if(linked){shopifyHeading.textContent='Shopify identity linked';shopifyDescription.textContent=link.shopifyEmail||'Your verified store account is connected to the Haus.';shopifyBadge.textContent='LINKED';shopifyBadge.classList.add('connected');connectShopifyButton.hidden=true;disconnectShopifyButton.hidden=false;return}shopifyHeading.textContent='Connect your store account';shopifyDescription.textContent='Link your Shopify customer account to keep purchases and product records connected to your Passport.';shopifyBadge.textContent='NOT LINKED';shopifyBadge.classList.remove('connected');connectShopifyButton.hidden=false;disconnectShopifyButton.hidden=true}
-async function loadMember(user){const ref=doc(db,'users',user.uid),snapshot=await getDoc(ref),existing=snapshot.exists()?snapshot.data():{};const details={uid:user.uid,email:user.email||null,displayName:user.displayName||null,memberNumber:existing.memberNumber||makeMemberNumber(user.uid),memberSince:existing.memberSince||new Date().getFullYear(),membershipStatus:existing.membershipStatus||'ACTIVE',houseLedger:existing.houseLedger||'SOVEREIGN TIER',notificationPreferences:existing.notificationPreferences||{vipDropWindows:true,nocturnalReminders:true,hausNotices:true,libraryAcademy:true},updatedAt:serverTimestamp()};if(!snapshot.exists()||!existing.memberNumber||!existing.memberSince)await setDoc(ref,details,{merge:true});displayName.textContent=memberName(user);number.textContent=details.memberNumber;since.textContent=memberYear(details.memberSince);tier.textContent=details.houseLedger;email.textContent=user.email||'';showStatus(details.membershipStatus);setToggles(details.notificationPreferences,details.membershipStatus==='SUSPENDED');return details}
-async function loadShopifyLink(uid){try{const snapshot=await getDoc(doc(db,'shopifyLinks',uid));renderShopifyStatus(snapshot.exists()?snapshot.data():null)}catch(error){renderShopifyStatus(null)}}
-async function loadRole(user){try{const adminRecord=await getDoc(doc(db,'admins',user.uid));const role=adminRecord.exists()?adminRecord.data().role:null;const isAdmin=role==='master'||role==='admin';adminBadge.hidden=!isAdmin;if(isAdmin){adminBadge.textContent=role.toUpperCase();masterLedgerLink.hidden=false}else masterLedgerLink.hidden=true}catch(error){adminBadge.hidden=true;masterLedgerLink.hidden=true}}
-await setPersistence(auth,browserLocalPersistence).catch(()=>{});onAuthStateChanged(auth,async user=>{if(!user){window.location.replace('signin.html');return}try{await Promise.all([loadMember(user),loadRole(user),loadShopifyLink(user.uid)])}catch(err){message.textContent='We could not load your member record. Check Firestore setup and rules.';message.classList.add('error');displayName.textContent=memberName(user);email.textContent=user.email||''}});
-document.getElementById('signOutButton').onclick=async()=>{message.textContent='Signing out…';try{await signOut(auth);window.location.replace('signin.html')}catch(err){message.textContent='Unable to sign out. Please try again.';message.classList.add('error')}};
-document.querySelectorAll('.toggle').forEach(toggle=>{toggle.onclick=async()=>{const on=!toggle.classList.contains('on');toggle.classList.toggle('on',on);toggle.setAttribute('aria-pressed',String(on));const user=auth.currentUser;if(!user)return;const settings={};document.querySelectorAll('.toggle').forEach(t=>settings[t.dataset.setting]=t.classList.contains('on'));try{await setDoc(doc(db,'users',user.uid),{notificationPreferences:settings,updatedAt:serverTimestamp()},{merge:true})}catch(err){message.textContent='Your preference could not be saved.';message.classList.add('error')}}});
-connectShopifyButton.onclick=async()=>{const user=auth.currentUser;if(!user){window.location.replace('signin.html');return}message.textContent='Store account linking will open securely.';message.classList.remove('error');/* Replace this route with your deployed Firebase Function start URL after Shopify Customer Account API setup. */window.location.href='/api/shopify/link/start'};
-disconnectShopifyButton.onclick=()=>{message.textContent='Disconnect is completed through the secure Shopify-link service.';message.classList.remove('error')};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+
+const displayName=document.getElementById('displayName'),
+      number=document.getElementById('memberNumber'),
+      since=document.getElementById('memberSince'),
+      email=document.getElementById('profileEmail'),
+      tier=document.getElementById('ledgerTier'),
+      message=document.getElementById('message'),
+      statusBadge=document.getElementById('statusBadge'),
+      adminBadge=document.getElementById('adminBadge'),
+      suspensionNote=document.getElementById('suspensionNote'),
+      masterLedgerLink=document.getElementById('masterLedgerLink'),
+
+      shopifyHeading=document.getElementById('shopifyHeading'),
+      shopifyDescription=document.getElementById('shopifyDescription'),
+      shopifyBadge=document.getElementById('shopifyBadge'),
+      connectShopifyButton=document.getElementById('connectShopifyButton'),
+      disconnectShopifyButton=document.getElementById('disconnectShopifyButton'),
+      shopifyLinkForm=document.getElementById('shopifyLinkForm'),
+      shopDomainInput=document.getElementById('shopDomainInput'),
+      saveShopifyButton=document.getElementById('saveShopifyButton'),
+      cancelShopifyButton=document.getElementById('cancelShopifyButton');
+
+function makeMemberNumber(uid){let value=0;for(let i=0;i<uid.length;i++)value=(value*31+uid.charCodeAt(i))%1000000;return String(value).padStart(6,'0')}
+function memberName(user){return(user.displayName||user.email||'MEMBER').split('@')[0].replace(/[._-]+/g,' ').toUpperCase()}
+function memberYear(value){return value&&value.toDate?value.toDate().getFullYear():value||new Date().getFullYear()}
+function setToggles(settings,disabled=false){document.querySelectorAll('.toggle').forEach(t=>{const on=settings?.[t.dataset.setting]!==false;t.classList.toggle('on',on);t.setAttribute('aria-pressed',String(on));t.disabled=disabled})}
+function showStatus(status){const value=(status||'ACTIVE').toUpperCase();statusBadge.textContent=value;statusBadge.className='badge '+(value==='ACTIVE'?'active':value==='SUSPENDED'?'suspended':'');suspensionNote.classList.toggle('visible',value==='SUSPENDED')}
+
+function renderShopifyStatus(link){
+  const linked = !!(link && link.shopifyStoreDomain && link.shopifyConnected);
+  if (linked) {
+    shopifyHeading.textContent = 'Shopify identity linked';
+    shopifyDescription.textContent = 'Your store (' + link.shopifyStoreDomain + ') is connected to your Passport.';
+    shopifyBadge.textContent = 'LINKED';
+    shopifyBadge.classList.add('connected');
+    connectShopifyButton.hidden = true;
+    disconnectShopifyButton.hidden = false;
+    shopifyLinkForm.style.display = 'none';
+  } else {
+    shopifyHeading.textContent = 'Connect your store account';
+    shopifyDescription.textContent = 'Link your Shopify store domain to keep purchases and product records connected to your Passport.';
+    shopifyBadge.textContent = 'NOT LINKED';
+    shopifyBadge.classList.remove('connected');
+    connectShopifyButton.hidden = false;
+    disconnectShopifyButton.hidden = true;
+    shopifyLinkForm.style.display = 'none';
+  }
+}
+
+async function loadMember(user){
+  const ref=doc(db,'users',user.uid),
+        snapshot=await getDoc(ref),
+        existing=snapshot.exists()?snapshot.data():{};
+  const details={
+    uid:user.uid,
+    email:user.email||null,
+    displayName:user.displayName||null,
+    memberNumber:existing.memberNumber||makeMemberNumber(user.uid),
+    memberSince:existing.memberSince||new Date().getFullYear(),
+    membershipStatus:existing.membershipStatus||'ACTIVE',
+    houseLedger:existing.houseLedger||'SOVEREIGN TIER',
+    notificationPreferences:existing.notificationPreferences||{vipDropWindows:true,nocturnalReminders:true,hausNotices:true,libraryAcademy:true},
+    updatedAt:serverTimestamp()
+  };
+  if(!snapshot.exists()||!existing.memberNumber||!existing.memberSince)await setDoc(ref,details,{merge:true});
+  displayName.textContent=memberName(user);
+  number.textContent=details.memberNumber;
+  since.textContent=memberYear(details.memberSince);
+  tier.textContent=details.houseLedger;
+  email.textContent=user.email||'';
+  showStatus(details.membershipStatus);
+  setToggles(details.notificationPreferences,details.membershipStatus==='SUSPENDED');
+  return details;
+}
+
+async function loadShopifyLink(uid){
+  try{
+    const snapshot=await getDoc(doc(db,'shopifyLinks',uid));
+    renderShopifyStatus(snapshot.exists()?snapshot.data():null);
+  }catch(error){
+    renderShopifyStatus(null);
+  }
+}
+
+async function loadRole(user){
+  try{
+    const adminRecord=await getDoc(doc(db,'admins',user.uid));
+    const role=adminRecord.exists()?adminRecord.data().role:null;
+    const isAdmin=role==='master'||role==='admin';
+    adminBadge.hidden=!isAdmin;
+    if(isAdmin){
+      adminBadge.textContent=role.toUpperCase();
+      masterLedgerLink.hidden=false;
+    }else masterLedgerLink.hidden=true;
+  }catch(error){
+    adminBadge.hidden=true;
+    masterLedgerLink.hidden=true;
+  }
+}
+
+await setPersistence(auth,browserLocalPersistence).catch(()=>{});
+onAuthStateChanged(auth,async user=>{
+  if(!user){window.location.replace('signin.html');return}
+  try{
+    await Promise.all([loadMember(user),loadRole(user),loadShopifyLink(user.uid)]);
+  }catch(err){
+    message.textContent='We could not load your member record. Check Firestore setup and rules.';
+    message.classList.add('error');
+    displayName.textContent=memberName(user);
+    email.textContent=user.email||'';
+  }
+});
+
+document.getElementById('signOutButton').onclick=async()=>{
+  message.textContent='Signing out…';
+  try{await signOut(auth);window.location.replace('signin.html')}catch(err){
+    message.textContent='Unable to sign out. Please try again.';
+    message.classList.add('error');
+  }
+};
+
+document.querySelectorAll('.toggle').forEach(toggle=>{
+  toggle.onclick=async()=>{
+    const on=!toggle.classList.contains('on');
+    toggle.classList.toggle('on',on);
+    toggle.setAttribute('aria-pressed',String(on));
+    const user=auth.currentUser;
+    if(!user)return;
+    const settings={};
+    document.querySelectorAll('.toggle').forEach(t=>settings[t.dataset.setting]=t.classList.contains('on'));
+    try{
+      await setDoc(doc(db,'users',user.uid),{notificationPreferences:settings,updatedAt:serverTimestamp()},{merge:true});
+    }catch(err){
+      message.textContent='Your preference could not be saved.';
+      message.classList.add('error');
+    }
+  };
+});
+
+// Shopify link flow (domain-only for now)
+connectShopifyButton.onclick = () => {
+  shopifyLinkForm.style.display = 'block';
+  connectShopifyButton.hidden = true;
+  disconnectShopifyButton.hidden = true;
+  shopDomainInput.focus();
+};
+
+cancelShopifyButton.onclick = () => {
+  shopifyLinkForm.style.display = 'none';
+  connectShopifyButton.hidden = false;
+  disconnectShopifyButton.hidden = !shopifyBadge.classList.contains('connected');
+};
+
+saveShopifyButton.onclick = async () => {
+  const user = auth.currentUser;
+  if (!user) {
+    window.location.replace('signin.html');
+    return;
+  }
+
+  let domain = shopDomainInput.value.trim();
+  domain = domain.replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+
+  if (!/^[a-z0-9-]+\.myshopify\.com$/i.test(domain)) {
+    message.textContent = 'Enter a valid Shopify domain like your-store.myshopify.com';
+    message.classList.add('error');
+    return;
+  }
+
+  message.textContent = 'Saving…';
+  message.classList.remove('error');
+
+  try {
+    await setDoc(
+      doc(db, 'shopifyLinks', user.uid),
+      {
+        shopifyStoreDomain: domain,
+        shopifyConnected: true,
+        updatedAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+    message.textContent = 'Shopify store linked.';
+    message.classList.remove('error');
+    shopifyLinkForm.style.display = 'none';
+    await loadShopifyLink(user.uid);
+  } catch (err) {
+    message.textContent = 'Could not save Shopify link.';
+    message.classList.add('error');
+  }
+};
+
+disconnectShopifyButton.onclick = async () => {
+  const user = auth.currentUser;
+  if (!user) {
+    window.location.replace('signin.html');
+    return;
+  }
+
+  message.textContent = 'Disconnecting…';
+  message.classList.remove('error');
+
+  try {
+    await setDoc(
+      doc(db, 'shopifyLinks', user.uid),
+      {
+        shopifyStoreDomain: null,
+        shopifyConnected: false,
+        updatedAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+    message.textContent = 'Shopify store disconnected.';
+    await loadShopifyLink(user.uid);
+  } catch (err) {
+    message.textContent = 'Could not disconnect Shopify.';
+    message.classList.add('error');
+  }
+};
 </script>
 <script>const menuLayer=document.getElementById('menuLayer');document.getElementById('menuButton').onclick=()=>menuLayer.classList.add('open');document.getElementById('closeMenu').onclick=()=>menuLayer.classList.remove('open');menuLayer.onclick=e=>{if(e.target===menuLayer)menuLayer.classList.remove('open')};const audio=document.getElementById('seacaboJingle'),music=document.getElementById('musicButton');function updateMusic(){const playing=!audio.paused;music.textContent=playing?'Ⅱ':'♫';music.classList.toggle('playing',playing);music.setAttribute('aria-pressed',String(playing));music.setAttribute('aria-label',playing?'Pause Se Acabó jingle':'Play Se Acabó jingle')}music.onclick=()=>{if(audio.paused)audio.play().catch(()=>{});else audio.pause()};audio.onplay=updateMusic;audio.onpause=updateMusic;audio.onended=updateMusic;</script>
 </body>
